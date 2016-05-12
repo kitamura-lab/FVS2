@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="ffmpeg-2.1.1-windows-x86_64.jar"/>
+	<classpathentry kind="lib" path="javacpp.jar"/>
+	<classpathentry kind="lib" path="javacv-windows-x86_64.jar"/>
+	<classpathentry kind="lib" path="javacv.jar"/>
+	<classpathentry kind="lib" path="poi-3.14-20160307.jar"/>
+	<classpathentry kind="lib" path="poi-ooxml-3.14-20160307.jar"/>
+	<classpathentry kind="lib" path="xmlbeans-2.6.0.jar"/>
+	<classpathentry kind="lib" path="poi-examples-3.14-20160307.jar"/>
+	<classpathentry kind="lib" path="poi-excelant-3.14-20160307.jar"/>
+	<classpathentry kind="lib" path="poi-ooxml-schemas-3.14-20160307.jar"/>
+	<classpathentry kind="lib" path="poi-scratchpad-3.14-20160307.jar"/>
+	<classpathentry kind="lib" path="opencv-2.4.8-windows-x86_64.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
