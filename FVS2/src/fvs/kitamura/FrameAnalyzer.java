@@ -10,16 +10,20 @@ public class FrameAnalyzer {
 	
 	public static void main(String[] args) {
 		new FrameAnalyzer("MVI_4408.mp4");
+		//System.out.println("PASS2");
 	}
 	
 	FrameAnalyzer(String file){
 		BufferedImage read=null;
 		
 		try {
+			//System.out.println("PASS1");
 			FFmpegFrameGrabber gr = new FFmpegFrameGrabber(file);
+
 			gr.start();
 			read = gr.grab().getBufferedImage();
 			gr.stop();
+
 
 			int w = read.getWidth(), h = read.getHeight();
 			//System.out.println("" + w + ":" + h);

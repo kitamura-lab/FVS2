@@ -9,7 +9,11 @@ import java.awt.datatransfer.Transferable;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 import javax.swing.JButton;
@@ -25,6 +29,8 @@ public class FVS {
 	private JPanel panel;
 
 	final String version = "2.0";
+	final String LOGFILE = "FVS.log";
+	private Logger logger = null;
 
 	String[][] pos;
 
@@ -48,6 +54,19 @@ public class FVS {
 	 * Create the application.
 	 */
 	public FVS() {
+		
+		logger = Logger.getLogger(this.getClass().getName());
+        try {
+            // 出力ファイルを指定する
+            FileHandler fh = new FileHandler(LOGFILE);
+            // 出力フォーマットを指定する
+            fh.setFormatter(new java.util.logging.SimpleFormatter());
+            logger.addHandler(fh);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        logger.setLevel(Level.CONFIG);
+        //logger.log(Level.INFO, "単なるおまけ");
 
 		LineBorder border = new LineBorder(Color.BLACK, 2, true);
 
@@ -154,7 +173,7 @@ public class FVS {
 				//StringBuffer fileList = new StringBuffer();
 				for (File file : files) {
 					if (file.isDirectory())
-						new SortVideo(file, jl);
+						new SortVideo(file, jl, logger);
 					else {
 						Schedule sc = new Schedule(file);
 						pos = sc.getPos();

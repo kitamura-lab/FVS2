@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.nio.channels.FileChannel;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JButton;
 
@@ -18,10 +20,10 @@ public class SortVideo {
 		// TODO Auto-generated method stub
 		final String srcPath = "C:\\Users\\Kitamura\\Documents";
 		final String srcFolder = "FVideo";
-		new SortVideo(new File(srcPath,srcFolder), null);
+		new SortVideo(new File(srcPath,srcFolder), null, null);
 	}
 	
-	SortVideo(File src, JButton[][] jlabel)
+	SortVideo(File src, JButton[][] jlabel, Logger logger)
 	{
 		//System.out.println(src.getName());
 		int pno=0;
@@ -45,7 +47,8 @@ public class SortVideo {
 			//int fileSize = (int) srcFile.length() / 1024;
 			
 			int wValue = new FrameAnalyzer(srcFile.getAbsolutePath()).getW();
-			System.out.println(srcFile.getAbsolutePath()+":"+wValue);
+			//System.out.println(srcFile.getAbsolutePath()+":"+wValue);
+			logger.log(Level.CONFIG, srcFile.getAbsolutePath()+":"+wValue);
 			
 			int cat = 0;
 
