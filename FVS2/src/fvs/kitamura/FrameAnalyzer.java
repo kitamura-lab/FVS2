@@ -1,6 +1,8 @@
 package fvs.kitamura;
 
 import java.awt.image.BufferedImage;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.googlecode.javacv.FFmpegFrameGrabber;
 
@@ -9,11 +11,11 @@ public class FrameAnalyzer {
 	int wValue = 0;
 	
 	public static void main(String[] args) {
-		new FrameAnalyzer("MVI_4408.mp4");
+		new FrameAnalyzer("MVI_4408.mp4",null);
 		//System.out.println("PASS2");
 	}
 	
-	FrameAnalyzer(String file){
+	FrameAnalyzer(String file, Logger logger){
 		BufferedImage read=null;
 		
 		try {
@@ -43,6 +45,7 @@ public class FrameAnalyzer {
 			//System.out.println("W-Value:"+(int)(s/cnt));
 		} catch (Exception e) {
 			e.printStackTrace();
+			 logger.log(Level.SEVERE, "ERROR:", e);
 		}
 	}
 

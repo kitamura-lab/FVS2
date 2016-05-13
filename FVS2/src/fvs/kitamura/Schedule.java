@@ -8,6 +8,8 @@ import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Schedule {
 
@@ -18,14 +20,14 @@ public class Schedule {
 
 	public static void main(String[] args) {
 		final String file = "C:\\Users\\kitamura\\Documents\\FIGHTERS\\Menu.xlsx";
-		new Schedule(new File(file));
+		new Schedule(new File(file), null);
 	}
 	
 	String[][] getPos(){
 		return pos;
 	}
 	
-	Schedule(File filename){
+	Schedule(File filename, Logger logger){
 		FileInputStream in = null;
 		Workbook wb = null;
 
@@ -34,13 +36,16 @@ public class Schedule {
 			wb = WorkbookFactory.create(in);
 		} catch (IOException e) {
 			System.out.println(e.toString());
+			 logger.log(Level.SEVERE, "ERROR:", e);
 		} catch (InvalidFormatException e) {
 			System.out.println(e.toString());
+			 logger.log(Level.SEVERE, "ERROR:", e);
 		} finally {
 			try {
 				in.close();
 			} catch (IOException e) {
 				System.out.println(e.toString());
+				 logger.log(Level.SEVERE, "ERROR:", e);
 			}
 		}
 
@@ -83,6 +88,7 @@ public class Schedule {
 				if(pos[0][i].equals("END")) break;
 			} catch (Exception e) {
 				e.printStackTrace();
+				 logger.log(Level.SEVERE, "ERROR:", e);
 				break;
 			}
 		}

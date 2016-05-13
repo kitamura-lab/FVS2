@@ -28,7 +28,7 @@ public class FVS {
 	private JButton[][] jl = new JButton[10][100];
 	private JPanel panel;
 
-	final String version = "2.0";
+	final String version = "2.1";
 	final String LOGFILE = "FVS.log";
 	private Logger logger = null;
 
@@ -64,6 +64,7 @@ public class FVS {
             logger.addHandler(fh);
         } catch (IOException e) {
             e.printStackTrace();
+            logger.log(Level.SEVERE, "ERROR:", e);
         }
         logger.setLevel(Level.CONFIG);
         //logger.log(Level.INFO, "単なるおまけ");
@@ -175,7 +176,7 @@ public class FVS {
 					if (file.isDirectory())
 						new SortVideo(file, jl, logger);
 					else {
-						Schedule sc = new Schedule(file);
+						Schedule sc = new Schedule(file, logger);
 						pos = sc.getPos();
 						int jmax = 0;
 						int imax = 0;
@@ -220,6 +221,7 @@ public class FVS {
 
 			} catch (Exception e) {
 				e.printStackTrace();
+				 logger.log(Level.SEVERE, "ERROR:", e);
 			}
 			return true;
 		}

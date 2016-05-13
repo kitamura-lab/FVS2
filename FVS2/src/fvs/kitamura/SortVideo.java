@@ -46,7 +46,7 @@ public class SortVideo {
 			File srcFile = new File(src, sfile);
 			//int fileSize = (int) srcFile.length() / 1024;
 			
-			int wValue = new FrameAnalyzer(srcFile.getAbsolutePath()).getW();
+			int wValue = new FrameAnalyzer(srcFile.getAbsolutePath(),logger).getW();
 			//System.out.println(srcFile.getAbsolutePath()+":"+wValue);
 			logger.log(Level.CONFIG, srcFile.getAbsolutePath()+":"+wValue);
 			
@@ -83,6 +83,7 @@ public class SortVideo {
 					fos.close();
 				} catch (Exception ex) {
 					ex.printStackTrace();
+					 logger.log(Level.SEVERE, "ERROR:", ex);
 				}
 			}
 			//System.out.println(sfile + ":" + fileSize + ":" + cat);
