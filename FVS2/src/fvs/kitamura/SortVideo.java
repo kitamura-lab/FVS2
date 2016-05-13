@@ -46,6 +46,8 @@ public class SortVideo {
 			File srcFile = new File(src, sfile);
 			//int fileSize = (int) srcFile.length() / 1024;
 			
+			if(!srcFile.getPath().endsWith("MP4")) continue;
+			
 			int wValue = new FrameAnalyzer(srcFile.getAbsolutePath(),logger).getW();
 			//System.out.println(srcFile.getAbsolutePath()+":"+wValue);
 			logger.log(Level.CONFIG, srcFile.getAbsolutePath()+":"+wValue);

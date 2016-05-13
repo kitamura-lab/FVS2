@@ -28,7 +28,7 @@ public class FVS {
 	private JButton[][] jl = new JButton[10][100];
 	private JPanel panel;
 
-	final String version = "2.1";
+	final String version = "2.2";
 	final String LOGFILE = "FVS.log";
 	private Logger logger = null;
 
