@@ -6,10 +6,17 @@ import java.util.logging.Logger;
 
 import com.googlecode.javacv.FFmpegFrameGrabber;
 
+/**
+ * @author Kitamura
+ *　動画の白さを判定
+ */
 public class FrameAnalyzer {
 	
 	int white = 0;
 	
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		new FrameAnalyzer("MVI_4408.mp4",null);
 	}
@@ -17,6 +24,7 @@ public class FrameAnalyzer {
 	FrameAnalyzer(String file, Logger logger){
 		
 		try {
+			//動画の最初のフレームを抜き出す
 			logger.log(Level.CONFIG, "FFmpegFrameGrabber:"+file);
 			FFmpegFrameGrabber gr = new FFmpegFrameGrabber(file);
 
@@ -26,8 +34,10 @@ public class FrameAnalyzer {
 			gr.stop();
 			logger.log(Level.CONFIG, "After getBufferedImage:"+file);
 			
+			//フレームの縦横を獲得
 			int w = read.getWidth(), h = read.getHeight();
 
+			//フレームの白さを計算する
 			int rgb;
 			int cnt = 0;
 			double sum = 0;
@@ -38,7 +48,6 @@ public class FrameAnalyzer {
 					cnt += 3;
 				}
 			}
-
 			white = (int)(sum/cnt);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -46,18 +55,24 @@ public class FrameAnalyzer {
 		}
 	}
 
+	//赤成分の抽出
 	static int r(int c) {
 		return c >> 16 & 0xff;
 	}
 
+	//緑成分の抽出
 	static int g(int c) {
 		return c >> 8 & 0xff;
 	}
 
+	//青成分の抽出
 	static int b(int c) {
 		return c & 0xff;
 	}
-
+	
+	/**
+	 * @return　白さ
+	 */
 	public int getWhite(){
 		return white;
 	}
