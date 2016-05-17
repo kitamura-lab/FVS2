@@ -31,7 +31,7 @@ public class FVS {
 	private JButton[][] item = new JButton[COLMAX][ROWMAX];
 	private JPanel panel;
 
-	final String version = "2.2";
+	final String version = "2.2a";
 	final String LOGFILE = "FVS.log";
 	private Logger logger = null;
 

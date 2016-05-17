@@ -60,9 +60,6 @@ public class SortVideo {
 					while (item[pos][cat].getForeground() == Color.WHITE) {
 						cat = ++catCounter;
 					}
-					while (item[pos][cat].getForeground() == Color.WHITE) {
-						cat = ++catCounter;
-					}
 					File catFolder = new File(dest, "" + cat + "." + item[pos][cat].getText());
 					if (!catFolder.exists())
 						catFolder.mkdir();
