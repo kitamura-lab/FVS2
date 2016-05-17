@@ -2,7 +2,6 @@ package fvs.kitamura;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.datatransfer.DataFlavor;
@@ -16,30 +15,35 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.TransferHandler;
 import javax.swing.border.LineBorder;
 
+/**
+ * @author Yasuhiko Kitamura
+ *
+ */
 public class FVS {
 
-	static final int COLMAX = 20;
-	static final int ROWMAX = 100;
+	static final int POSMAX = 20; //ポジションの最大数
+	static final int ITEMMAX = 100; //メニューアイテムの最大数
 	
 	private JFrame frame;
-	private JButton[][] item = new JButton[COLMAX][ROWMAX];
+	private JButton[][] item = new JButton[POSMAX][ITEMMAX];
 	private JPanel panel;
 	//private JLabel label = new JLabel();
 
-	final String version = "2.3";
-	final String LOGFILE = "FVS.log";
+	final String version = "2.3a";
+	final String logfile = "FVS.log";
 	private Logger logger = null;
 
 	String[][] menu;
 
+	/**
+	 * @param args 無使用
+	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -53,23 +57,28 @@ public class FVS {
 		});
 	}
 
+	/**
+	 * コンストラクタ
+	 */
 	public FVS() {
 
+		/* ログファイルの初期化 */
 		logger = Logger.getLogger(this.getClass().getName());
 		try {
-			FileHandler fh = new FileHandler(LOGFILE);
+			FileHandler fh = new FileHandler(logfile);
 			fh.setFormatter(new java.util.logging.SimpleFormatter());
 			logger.addHandler(fh);
 		} catch (IOException e) {
 			e.printStackTrace();
-			logger.log(Level.SEVERE, "ERROR:", e);
+			//logger.log(Level.SEVERE, "ERROR:", e);
 		}
 		logger.setLevel(Level.CONFIG);
 
 		LineBorder border = new LineBorder(Color.BLACK, 2, true);
 
-		for (int i = 0; i < COLMAX; i++) {
-			for (int j = 0; j < ROWMAX; j++) {
+		/* 練習メニューの初期化 */
+		for (int i = 0; i < POSMAX; i++) {
+			for (int j = 0; j < ITEMMAX; j++) {
 				item[i][j] = new JButton();
 				item[i][j].setBorder(border);
 				item[i][j].setText("");
@@ -79,14 +88,20 @@ public class FVS {
 		initialize();
 	}
 
+	/**
+	 * @author Kitamura
+	 *　練習メニューボタン用リスナー
+	 */
 	public class myListener implements ActionListener {
 		int x, y;
 
+		// 練習メニューボタンの位置設定
 		myListener(int x0, int y0) {
 			x = x0;
 			y = y0;
 		}
 
+		// 練習メニューボタンのON/OFF
 		public void actionPerformed(ActionEvent e) {
 			if (item[x][y].getBackground() == Color.WHITE) {
 				item[x][y].setBackground(Color.BLACK);
@@ -98,23 +113,27 @@ public class FVS {
 		}
 	}
 
+	// FVSの初期化
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 500, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("FVS" + version);
 
+		// 練習メニューボタン用パネル
 		panel = new JPanel();
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
-
 		panel.setLayout(new GridLayout(1, 1));
 
+		// 初期メッセージ
 		panel.add(item[0][0]);
 		item[0][0].setText("ここに練習メニュー，ビデオフォルダの順にドロップしてね！");
 
+		// ドラッグアンドドロップ
 		panel.setTransferHandler(new DropFileHandler());
 	}
 
+	// ドラッグアンドドロップハンドラ
 	private class DropFileHandler extends TransferHandler {
 
 		private static final long serialVersionUID = 1L;
@@ -151,34 +170,39 @@ public class FVS {
 				// ファイルを受け取る
 				List<File> files = (List<File>) t.getTransferData(DataFlavor.javaFileListFlavor);
 
-				// テキストエリアに表示するファイル名リストを作成する
+				// ドロップされたファイル処理
 				for (File file : files) {
+					// ディレクトリならビデオソート
 					if (file.isDirectory()){
 						frame.setTitle("FVS" + version + ": " + "Sorting...");
 						new SortVideo(file, item, logger);
 						frame.setTitle("FVS" + version + ": " + "Completed");
 					}
+					// 練習メニューならアイテムを表示
 					else {
-						menu = new Schedule(file, logger).getMenu();
+						menu = new Schedule(file, logger).getMenu(); //メニューを得る
 						int xmax = 0;
 						int ymax = 0;
-						for (xmax = 0; xmax < COLMAX; xmax++) {
-							if (menu[xmax][0].equals(""))
+						for (xmax = 0; xmax < POSMAX; xmax++) {
+							if (menu[xmax][0].equals("")) //ポジションが空白なら終了
 								break;
 							int y1 = 0;
-							for (int y = 0; y < ROWMAX; y++) {
-								if (menu[xmax][y].equals(""))
+							for (int y = 0; y < ITEMMAX; y++) {
+								if (menu[xmax][y].equals("")) //メニューが空白なら飛ばす
 									continue;
-								if (menu[xmax][y].equals("POST"))
+								if (menu[xmax][y].equals("POST")) //メニューがPOSTなら終了
 									break;
-								if (menu[xmax][y].equals("END"))
+								if (menu[xmax][y].equals("END")) //メニューがENDなら終了
 									break;
-								if (Pattern.compile("^Break").matcher(menu[xmax][y]).find())
+								if (Pattern.compile("^Break").matcher(menu[xmax][y]).find()) //メニューがBreakなら飛ばす
 									continue;
-								if (Pattern.compile("^Fundamental").matcher(menu[xmax][y]).find())
+								if (Pattern.compile("^Fundamental").matcher(menu[xmax][y]).find())//メニューがFundamentalなら飛ばす
 									continue;
 
+								// 不適切な文字コードを置換
 								item[xmax][y1].setText(menu[xmax][y].replaceAll("/", "／").replaceAll("&", "＆").replaceAll("\n", " "));
+								
+								// メニューをクリック可能に
 								if (y1 != 0) {
 									item[xmax][y1].addActionListener(new myListener(xmax, y1));
 									item[xmax][y1].setBackground(Color.WHITE);
@@ -186,25 +210,19 @@ public class FVS {
 								}
 								y1++;
 							}
+							//メニューアイテム最大数を設定
 							if (ymax < y1)
 								ymax = y1;
 						}
-						//panel1 = new JPanel();
+						
+						//メニューボタンの配置
 						panel.setLayout(new GridLayout(ymax, xmax));
-
 						for (int i = 0; i < ymax; i++) {
 							for (int j = 0; j < xmax; j++)
 								panel.add(item[j][i]);
-						}
-						
-						//panel.setLayout(new GridLayout(2,1));
-						//panel.add(panel1);
-						//label.setPreferredSize(new Dimension(200,20));
-						//panel.add(label);
-
+						}						
 					}
 				}
-
 			} catch (Exception e) {
 				e.printStackTrace();
 				logger.log(Level.SEVERE, "ERROR:", e);
