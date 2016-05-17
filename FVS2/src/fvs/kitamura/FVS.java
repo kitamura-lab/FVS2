@@ -172,7 +172,7 @@ public class FVS {
 								if (Pattern.compile("^Fundamental").matcher(menu[xmax][y]).find())
 									continue;
 
-								item[xmax][y1].setText(menu[xmax][y].replaceAll("/", "／").replaceAll("&", "＆"));
+								item[xmax][y1].setText(menu[xmax][y].replaceAll("/", "／").replaceAll("&", "＆").replaceAll("\n", " "));
 								if (y1 != 0) {
 									item[xmax][y1].addActionListener(new myListener(xmax, y1));
 									item[xmax][y1].setBackground(Color.WHITE);

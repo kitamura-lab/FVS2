@@ -24,12 +24,12 @@ public class Schedule {
 		final String file = "C:\\Users\\kitamura\\Documents\\FIGHTERS\\Menu.xlsx";
 		new Schedule(new File(file), null);
 	}
-	
-	String[][] getMenu(){
+
+	String[][] getMenu() {
 		return menu;
 	}
-	
-	Schedule(File filename, Logger logger){
+
+	Schedule(File filename, Logger logger) {
 		FileInputStream in = null;
 		Workbook wb = null;
 
@@ -38,24 +38,24 @@ public class Schedule {
 			wb = WorkbookFactory.create(in);
 		} catch (IOException e) {
 			System.out.println(e.toString());
-			 logger.log(Level.SEVERE, "ERROR:", e);
+			logger.log(Level.SEVERE, "ERROR:", e);
 		} catch (InvalidFormatException e) {
 			System.out.println(e.toString());
-			 logger.log(Level.SEVERE, "ERROR:", e);
+			logger.log(Level.SEVERE, "ERROR:", e);
 		} finally {
 			try {
 				in.close();
 			} catch (IOException e) {
 				System.out.println(e.toString());
-				 logger.log(Level.SEVERE, "ERROR:", e);
+				logger.log(Level.SEVERE, "ERROR:", e);
 			}
 		}
 
-		for(int i=0;i<20;i++){
-			for(int j=0;j<100;j++)
+		for (int i = 0; i < 20; i++) {
+			for (int j = 0; j < 100; j++)
 				menu[i][j] = "";
 		}
-		
+
 		Sheet sheet = wb.getSheetAt(0);
 		Row row1 = sheet.getRow(ROW0);
 
@@ -76,17 +76,21 @@ public class Schedule {
 				for (int j = 0; j < poscnt; j++) {
 
 					Cell cell = row.getCell(j + COL0);
+					// System.out.println("X:Y="+j+":"+i+"="+cell.toString());
 					menu[j][i] = cell.toString();
-					CellStyle style=cell.getCellStyle();
-					if (menu[j][i].equals("") && j > 0 && style.getBorderLeft()==0) {
+					CellStyle style = cell.getCellStyle();
+					if (menu[j][i].equals("") && j > 0 && style.getBorderLeft() == 0) {
 						menu[j][i] = menu[j - 1][i];
 					}
 				}
-				if(menu[0][i].equals("POST")) break;
-				if(menu[0][i].equals("END")) break;
+				if (menu[0][i].equals("POST"))
+					break;
+				if (menu[0][i].equals("END"))
+					break;
 			} catch (Exception e) {
-				e.printStackTrace();
-				 logger.log(Level.SEVERE, "ERROR:", e);
+				//エクセルファイルの終端まで到達
+				// e.printStackTrace();
+				// logger.log(Level.SEVERE, "ERROR:", e);
 				break;
 			}
 		}
