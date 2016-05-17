@@ -25,7 +25,7 @@ import javax.swing.border.LineBorder;
 public class FVS {
 
 	private JFrame frame;
-	private JButton[][] jl = new JButton[10][100];
+	private JButton[][] item = new JButton[10][100];
 	private JPanel panel;
 
 	final String version = "2.2";
@@ -34,9 +34,6 @@ public class FVS {
 
 	String[][] pos;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -50,16 +47,11 @@ public class FVS {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
 	public FVS() {
 		
 		logger = Logger.getLogger(this.getClass().getName());
         try {
-            // 出力ファイルを指定する
             FileHandler fh = new FileHandler(LOGFILE);
-            // 出力フォーマットを指定する
             fh.setFormatter(new java.util.logging.SimpleFormatter());
             logger.addHandler(fh);
         } catch (IOException e) {
@@ -67,16 +59,14 @@ public class FVS {
             logger.log(Level.SEVERE, "ERROR:", e);
         }
         logger.setLevel(Level.CONFIG);
-        //logger.log(Level.INFO, "単なるおまけ");
 
 		LineBorder border = new LineBorder(Color.BLACK, 2, true);
 
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 100; j++) {
-				jl[i][j] = new JButton();
-				jl[i][j].setBorder(border);
-				jl[i][j].setText("");
-				// jl[i][j].addActionListener(new myListener(i,j));
+				item[i][j] = new JButton();
+				item[i][j].setBorder(border);
+				item[i][j].setText("");
 			}
 		}
 
@@ -84,28 +74,24 @@ public class FVS {
 	}
 
 	public class myListener implements ActionListener {
-		int i0, j0;
+		int x, y;
 
-		myListener(int i, int j) {
-			i0 = i;
-			j0 = j;
+		myListener(int x0, int y0) {
+			x = x0;
+			y = y0;
 		}
 
 		public void actionPerformed(ActionEvent e) {
-			// jl[i0][j0].setText("OK");
-			if (jl[i0][j0].getBackground() == Color.WHITE) {
-				jl[i0][j0].setBackground(Color.BLACK);
-				jl[i0][j0].setForeground(Color.WHITE);
+			if (item[x][y].getBackground() == Color.WHITE) {
+				item[x][y].setBackground(Color.BLACK);
+				item[x][y].setForeground(Color.WHITE);
 			} else {
-				jl[i0][j0].setBackground(Color.WHITE);
-				jl[i0][j0].setForeground(Color.BLACK);
+				item[x][y].setBackground(Color.WHITE);
+				item[x][y].setForeground(Color.BLACK);
 			}
 		}
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 500, 600);
@@ -117,29 +103,19 @@ public class FVS {
 
 		panel.setLayout(new GridLayout(1, 1));
 
-		// JLabel label = new JLabel();
-		panel.add(jl[0][0]);
-		// jl[0][0].setFont(new Font("ＭＳ ゴシック", Font.BOLD, 16));
-		jl[0][0].setText("ここに練習メニュー，ビデオフォルダの順にドロップしてね！");
+		panel.add(item[0][0]);
+		item[0][0].setText("ここに練習メニュー，ビデオフォルダの順にドロップしてね！");
 
-		// ドロップ操作を有効にする
 		panel.setTransferHandler(new DropFileHandler());
 	}
 
-	/**
-	 * ドロップ操作の処理を行うクラス
-	 */
 	private class DropFileHandler extends TransferHandler {
 
-		/**
-		 * 
-		 */
 		private static final long serialVersionUID = 1L;
 
 		/**
 		 * ドロップされたものを受け取るか判断 (ファイルのときだけ受け取る)
 		 */
-		@Override
 		public boolean canImport(TransferSupport support) {
 			if (!support.isDrop()) {
 				// ドロップ操作でない場合は受け取らない
@@ -157,7 +133,6 @@ public class FVS {
 		/**
 		 * ドロップされたファイルを受け取る
 		 */
-		@Override
 		public boolean importData(TransferSupport support) {
 			// 受け取っていいものか確認する
 			if (!canImport(support)) {
@@ -169,53 +144,49 @@ public class FVS {
 			try {
 				// ファイルを受け取る
 				List<File> files = (List<File>) t.getTransferData(DataFlavor.javaFileListFlavor);
-
+				
 				// テキストエリアに表示するファイル名リストを作成する
-				//StringBuffer fileList = new StringBuffer();
 				for (File file : files) {
 					if (file.isDirectory())
-						new SortVideo(file, jl, logger);
+						new SortVideo(file, item, logger);
 					else {
-						Schedule sc = new Schedule(file, logger);
-						pos = sc.getPos();
-						int jmax = 0;
-						int imax = 0;
-						for (imax = 0; imax < 10; imax++) {
-							// System.out.println(""+i+pos[i][0]);
-							if (pos[imax][0].equals(""))
+						pos = new Schedule(file, logger).getPos();
+						int xmax = 0;
+						int ymax = 0;
+						for (xmax = 0; xmax < 10; xmax++) {
+							if (pos[xmax][0].equals(""))
 								break;
-							int j1 = 0;
-							for (int j = 0; j < 100; j++) {
-								if (pos[imax][j].equals(""))
+							int y1 = 0;
+							for (int y = 0; y < 100; y++) {
+								if (pos[xmax][y].equals(""))
 									continue;
-								if (pos[imax][j].equals("POST"))
+								if (pos[xmax][y].equals("POST"))
 									break;
-								if (pos[imax][j].equals("END"))
+								if (pos[xmax][y].equals("END"))
 									break;
-								if (Pattern.compile("^Break").matcher(pos[imax][j]).find())
+								if (Pattern.compile("^Break").matcher(pos[xmax][y]).find())
 									continue;
-								if (Pattern.compile("^Fundamental").matcher(pos[imax][j]).find())
+								if (Pattern.compile("^Fundamental").matcher(pos[xmax][y]).find())
 									continue;
-								String jlt = pos[imax][j].replaceAll("/", "／").replaceAll("&", "＆");
-								jl[imax][j1].setText(jlt);
-								if (j1 != 0) {
-									jl[imax][j1].addActionListener(new myListener(imax, j1));
-									jl[imax][j1].setBackground(Color.WHITE);
-									jl[imax][j1].setForeground(Color.BLACK);
+								
+								item[xmax][y1].setText(pos[xmax][y].replaceAll("/", "／").replaceAll("&", "＆"));
+								if (y1 != 0) {
+									item[xmax][y1].addActionListener(new myListener(xmax, y1));
+									item[xmax][y1].setBackground(Color.WHITE);
+									item[xmax][y1].setForeground(Color.BLACK);
 								}
-								j1++;
+								y1++;
 							}
-							if (jmax < j1)
-								jmax = j1;
+							if (ymax < y1)
+								ymax = y1;
 						}
-						panel.setLayout(new GridLayout(jmax, imax));
+						panel.setLayout(new GridLayout(ymax, xmax));
 
-						for (int k = 0; k < jmax; k++) {
-							for (int l = 0; l < imax; l++)
-								panel.add(jl[l][k]);
+						for (int i = 0; i < ymax; i++) {
+							for (int j = 0; j < xmax; j++)
+								panel.add(item[j][i]);
 						}
 
-						// System.out.println("PASS"+i+jmax1);
 					}
 				}
 
