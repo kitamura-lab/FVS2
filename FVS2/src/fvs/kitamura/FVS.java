@@ -2,6 +2,7 @@ package fvs.kitamura;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.datatransfer.DataFlavor;
@@ -18,6 +19,7 @@ import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.TransferHandler;
 import javax.swing.border.LineBorder;
@@ -30,6 +32,7 @@ public class FVS {
 	private JFrame frame;
 	private JButton[][] item = new JButton[COLMAX][ROWMAX];
 	private JPanel panel;
+	//private JLabel label = new JLabel();
 
 	final String version = "2.3";
 	final String LOGFILE = "FVS.log";
@@ -150,8 +153,11 @@ public class FVS {
 
 				// テキストエリアに表示するファイル名リストを作成する
 				for (File file : files) {
-					if (file.isDirectory())
+					if (file.isDirectory()){
+						frame.setTitle("FVS" + version + ": " + "Sorting...");
 						new SortVideo(file, item, logger);
+						frame.setTitle("FVS" + version + ": " + "Completed");
+					}
 					else {
 						menu = new Schedule(file, logger).getMenu();
 						int xmax = 0;
@@ -183,12 +189,18 @@ public class FVS {
 							if (ymax < y1)
 								ymax = y1;
 						}
+						//panel1 = new JPanel();
 						panel.setLayout(new GridLayout(ymax, xmax));
 
 						for (int i = 0; i < ymax; i++) {
 							for (int j = 0; j < xmax; j++)
 								panel.add(item[j][i]);
 						}
+						
+						//panel.setLayout(new GridLayout(2,1));
+						//panel.add(panel1);
+						//label.setPreferredSize(new Dimension(200,20));
+						//panel.add(label);
 
 					}
 				}

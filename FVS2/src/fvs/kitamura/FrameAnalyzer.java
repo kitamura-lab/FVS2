@@ -17,12 +17,15 @@ public class FrameAnalyzer {
 	FrameAnalyzer(String file, Logger logger){
 		
 		try {
+			logger.log(Level.CONFIG, "FFmpegFrameGrabber:"+file);
 			FFmpegFrameGrabber gr = new FFmpegFrameGrabber(file);
 
 			gr.start();
+			logger.log(Level.CONFIG, "Before getBufferedImage:"+file);
 			BufferedImage read = gr.grab().getBufferedImage();
 			gr.stop();
-
+			logger.log(Level.CONFIG, "After getBufferedImage:"+file);
+			
 			int w = read.getWidth(), h = read.getHeight();
 
 			int rgb;
