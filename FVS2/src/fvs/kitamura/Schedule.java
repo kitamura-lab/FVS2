@@ -15,16 +15,18 @@ public class Schedule {
 
 	static final int ROW0 = 26;
 	static final int COL0 = 2;
+	static final int COLMAX = 20;
+	static final int ROWMAX = 100;
 
-	String[][] pos = new String[20][100];
+	String[][] menu = new String[COLMAX][ROWMAX];
 
 	public static void main(String[] args) {
 		final String file = "C:\\Users\\kitamura\\Documents\\FIGHTERS\\Menu.xlsx";
 		new Schedule(new File(file), null);
 	}
 	
-	String[][] getPos(){
-		return pos;
+	String[][] getMenu(){
+		return menu;
 	}
 	
 	Schedule(File filename, Logger logger){
@@ -51,41 +53,37 @@ public class Schedule {
 
 		for(int i=0;i<20;i++){
 			for(int j=0;j<100;j++)
-				pos[i][j] = "";
+				menu[i][j] = "";
 		}
 		
 		Sheet sheet = wb.getSheetAt(0);
 		Row row1 = sheet.getRow(ROW0);
 
 		int poscnt = 0;
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < COLMAX; i++) {
 			Cell cell = row1.getCell(i + COL0);
 			if (cell.toString().equals(""))
 				break;
 			else {
-				pos[poscnt][0] = cell.toString();
-				//System.out.println(pos[poscnt][0]);
+				menu[poscnt][0] = cell.toString();
 				poscnt++;
 			}
 		}
 
-		for (int i = 1; i < 100; i++) {
+		for (int i = 1; i < ROWMAX; i++) {
 			try {
 				Row row = sheet.getRow(i + ROW0);
 				for (int j = 0; j < poscnt; j++) {
 
 					Cell cell = row.getCell(j + COL0);
-					pos[j][i] = cell.toString();
+					menu[j][i] = cell.toString();
 					CellStyle style=cell.getCellStyle();
-					//System.out.println("BR:"+style.getBorderLeft());
-					if (pos[j][i].equals("") && j > 0 && style.getBorderLeft()==0) {
-						pos[j][i] = pos[j - 1][i];
+					if (menu[j][i].equals("") && j > 0 && style.getBorderLeft()==0) {
+						menu[j][i] = menu[j - 1][i];
 					}
-					//System.out.println("" + i + ":" + j + ":" + pos[j][i]);
-
 				}
-				if(pos[0][i].equals("POST")) break;
-				if(pos[0][i].equals("END")) break;
+				if(menu[0][i].equals("POST")) break;
+				if(menu[0][i].equals("END")) break;
 			} catch (Exception e) {
 				e.printStackTrace();
 				 logger.log(Level.SEVERE, "ERROR:", e);

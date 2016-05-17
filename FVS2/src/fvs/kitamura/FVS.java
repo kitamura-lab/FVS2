@@ -24,15 +24,18 @@ import javax.swing.border.LineBorder;
 
 public class FVS {
 
+	static final int COLMAX = 20;
+	static final int ROWMAX = 100;
+	
 	private JFrame frame;
-	private JButton[][] item = new JButton[10][100];
+	private JButton[][] item = new JButton[COLMAX][ROWMAX];
 	private JPanel panel;
 
 	final String version = "2.2";
 	final String LOGFILE = "FVS.log";
 	private Logger logger = null;
 
-	String[][] pos;
+	String[][] menu;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -62,8 +65,8 @@ public class FVS {
 
 		LineBorder border = new LineBorder(Color.BLACK, 2, true);
 
-		for (int i = 0; i < 10; i++) {
-			for (int j = 0; j < 100; j++) {
+		for (int i = 0; i < COLMAX; i++) {
+			for (int j = 0; j < ROWMAX; j++) {
 				item[i][j] = new JButton();
 				item[i][j].setBorder(border);
 				item[i][j].setText("");
@@ -150,26 +153,26 @@ public class FVS {
 					if (file.isDirectory())
 						new SortVideo(file, item, logger);
 					else {
-						pos = new Schedule(file, logger).getPos();
+						menu = new Schedule(file, logger).getMenu();
 						int xmax = 0;
 						int ymax = 0;
-						for (xmax = 0; xmax < 10; xmax++) {
-							if (pos[xmax][0].equals(""))
+						for (xmax = 0; xmax < COLMAX; xmax++) {
+							if (menu[xmax][0].equals(""))
 								break;
 							int y1 = 0;
-							for (int y = 0; y < 100; y++) {
-								if (pos[xmax][y].equals(""))
+							for (int y = 0; y < ROWMAX; y++) {
+								if (menu[xmax][y].equals(""))
 									continue;
-								if (pos[xmax][y].equals("POST"))
+								if (menu[xmax][y].equals("POST"))
 									break;
-								if (pos[xmax][y].equals("END"))
+								if (menu[xmax][y].equals("END"))
 									break;
-								if (Pattern.compile("^Break").matcher(pos[xmax][y]).find())
+								if (Pattern.compile("^Break").matcher(menu[xmax][y]).find())
 									continue;
-								if (Pattern.compile("^Fundamental").matcher(pos[xmax][y]).find())
+								if (Pattern.compile("^Fundamental").matcher(menu[xmax][y]).find())
 									continue;
 
-								item[xmax][y1].setText(pos[xmax][y].replaceAll("/", "／").replaceAll("&", "＆"));
+								item[xmax][y1].setText(menu[xmax][y].replaceAll("/", "／").replaceAll("&", "＆"));
 								if (y1 != 0) {
 									item[xmax][y1].addActionListener(new myListener(xmax, y1));
 									item[xmax][y1].setBackground(Color.WHITE);

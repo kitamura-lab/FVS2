@@ -55,7 +55,7 @@ public class FrameAnalyzer {
 		return c & 0xff;
 	}
 
-	public int getW(){
+	public int getWhite(){
 		return white;
 	}
 }

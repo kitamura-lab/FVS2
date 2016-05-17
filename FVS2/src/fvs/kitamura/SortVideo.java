@@ -11,29 +11,28 @@ import java.util.logging.Logger;
 import javax.swing.JButton;
 
 public class SortVideo {
-	
+
 	final static String destFolder = "SortedFVideo";
 	final static int catBoundary = 2000;
-	final static int wValueBoundary = 30;
-	
+	final static int whiteBoundary = 30;
+	static final int COLMAX = 20;
+	static final int ROWMAX = 100;
+
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		final String srcPath = "C:\\Users\\Kitamura\\Documents";
 		final String srcFolder = "FVideo";
-		new SortVideo(new File(srcPath,srcFolder), null, null);
+		new SortVideo(new File(srcPath, srcFolder), null, null);
 	}
-	
-	SortVideo(File src, JButton[][] jlabel, Logger logger)
-	{
-		//System.out.println(src.getName());
-		int pno=0;
-		for(pno=0;pno<9;pno++){
-			if(jlabel[pno][0].getText().equals(src.getName())) break;
+
+	SortVideo(File src, JButton[][] item, Logger logger) {
+
+		int pos = 0;
+		for (pos = 0; pos < COLMAX; pos++) {
+			if (item[pos][0].getText().equals(src.getName()))
+				break;
 		}
-		
-		
-		//System.out.println(src.getName());
-		File dest = new File(src.getParent()+"\\Sorted"+src.getName());
+
+		File dest = new File(src.getParent() + "\\Sorted" + src.getName());
 		if (!dest.exists())
 			dest.mkdir();
 
@@ -44,28 +43,27 @@ public class SortVideo {
 
 		for (String sfile : sfiles) {
 			File srcFile = new File(src, sfile);
-			//int fileSize = (int) srcFile.length() / 1024;
-			
-			if(!srcFile.getPath().endsWith("MP4")) continue;
-			
-			int wValue = new FrameAnalyzer(srcFile.getAbsolutePath(),logger).getW();
-			//System.out.println(srcFile.getAbsolutePath()+":"+wValue);
-			logger.log(Level.CONFIG, srcFile.getAbsolutePath()+":"+wValue);
-			
+	
+			if (!srcFile.getPath().endsWith("MP4"))
+				continue;
+
+			int white = new FrameAnalyzer(srcFile.getAbsolutePath(), logger).getWhite();
+			logger.log(Level.CONFIG, srcFile.getAbsolutePath() + ":" + white);
+
 			int cat = 0;
 
-			if(wValue < wValueBoundary)
+			if (white < whiteBoundary)
 				cat = 0;
 			else {
 				if (catOfPreviousFile == 0) {
 					cat = ++catCounter;
-					while(jlabel[pno][cat].getForeground()==Color.WHITE){
+					while (item[pos][cat].getForeground() == Color.WHITE) {
 						cat = ++catCounter;
 					}
-					while(jlabel[pno][cat].getForeground()==Color.WHITE){
+					while (item[pos][cat].getForeground() == Color.WHITE) {
 						cat = ++catCounter;
 					}
-					File catFolder = new File(dest, "" + cat+"."+jlabel[pno][cat].getText());
+					File catFolder = new File(dest, "" + cat + "." + item[pos][cat].getText());
 					if (!catFolder.exists())
 						catFolder.mkdir();
 				} else
@@ -73,9 +71,7 @@ public class SortVideo {
 				try {
 					FileInputStream fis = new FileInputStream(srcFile);
 					FileChannel srcChannel = fis.getChannel();
-					File destFile = new File(dest,"\\"+cat+"."+jlabel[pno][cat].getText()+"\\"+sfile);
-					//System.out.println(destFile);
-					//System.out.println(destFile);
+					File destFile = new File(dest, "\\" + cat + "." + item[pos][cat].getText() + "\\" + sfile);
 					FileOutputStream fos = new FileOutputStream(destFile);
 					FileChannel destChannel = fos.getChannel();
 					srcChannel.transferTo(0, srcChannel.size(), destChannel);
@@ -85,10 +81,9 @@ public class SortVideo {
 					fos.close();
 				} catch (Exception ex) {
 					ex.printStackTrace();
-					 logger.log(Level.SEVERE, "ERROR:", ex);
+					logger.log(Level.SEVERE, "ERROR:", ex);
 				}
 			}
-			//System.out.println(sfile + ":" + fileSize + ":" + cat);
 			catOfPreviousFile = cat;
 		}
 	}
