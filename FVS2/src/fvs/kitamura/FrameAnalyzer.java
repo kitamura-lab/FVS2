@@ -8,41 +8,35 @@ import com.googlecode.javacv.FFmpegFrameGrabber;
 
 public class FrameAnalyzer {
 	
-	int wValue = 0;
+	int white = 0;
 	
 	public static void main(String[] args) {
 		new FrameAnalyzer("MVI_4408.mp4",null);
-		//System.out.println("PASS2");
 	}
 	
 	FrameAnalyzer(String file, Logger logger){
-		BufferedImage read=null;
 		
 		try {
-			//System.out.println("PASS1");
 			FFmpegFrameGrabber gr = new FFmpegFrameGrabber(file);
 
 			gr.start();
-			read = gr.grab().getBufferedImage();
+			BufferedImage read = gr.grab().getBufferedImage();
 			gr.stop();
 
-
 			int w = read.getWidth(), h = read.getHeight();
-			//System.out.println("" + w + ":" + h);
 
-			int p;
+			int rgb;
 			int cnt = 0;
-			double s = 0;
+			double sum = 0;
 			for (int y = 20; y < h; y += 100) {
 				for (int x = 80; x < w; x += 100) {
-					p = read.getRGB(x, y);
-					s = s + r(p) + g(p) + b(p);
+					rgb = read.getRGB(x, y);
+					sum = sum + r(rgb) + g(rgb) + b(rgb);
 					cnt += 3;
 				}
 			}
 
-			wValue = (int)(s/cnt);
-			//System.out.println("W-Value:"+(int)(s/cnt));
+			white = (int)(sum/cnt);
 		} catch (Exception e) {
 			e.printStackTrace();
 			 logger.log(Level.SEVERE, "ERROR:", e);
@@ -62,7 +56,7 @@ public class FrameAnalyzer {
 	}
 
 	public int getW(){
-		return wValue;
+		return white;
 	}
 }
 

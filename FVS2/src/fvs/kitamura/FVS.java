@@ -48,17 +48,17 @@ public class FVS {
 	}
 
 	public FVS() {
-		
+
 		logger = Logger.getLogger(this.getClass().getName());
-        try {
-            FileHandler fh = new FileHandler(LOGFILE);
-            fh.setFormatter(new java.util.logging.SimpleFormatter());
-            logger.addHandler(fh);
-        } catch (IOException e) {
-            e.printStackTrace();
-            logger.log(Level.SEVERE, "ERROR:", e);
-        }
-        logger.setLevel(Level.CONFIG);
+		try {
+			FileHandler fh = new FileHandler(LOGFILE);
+			fh.setFormatter(new java.util.logging.SimpleFormatter());
+			logger.addHandler(fh);
+		} catch (IOException e) {
+			e.printStackTrace();
+			logger.log(Level.SEVERE, "ERROR:", e);
+		}
+		logger.setLevel(Level.CONFIG);
 
 		LineBorder border = new LineBorder(Color.BLACK, 2, true);
 
@@ -144,7 +144,7 @@ public class FVS {
 			try {
 				// ファイルを受け取る
 				List<File> files = (List<File>) t.getTransferData(DataFlavor.javaFileListFlavor);
-				
+
 				// テキストエリアに表示するファイル名リストを作成する
 				for (File file : files) {
 					if (file.isDirectory())
@@ -168,7 +168,7 @@ public class FVS {
 									continue;
 								if (Pattern.compile("^Fundamental").matcher(pos[xmax][y]).find())
 									continue;
-								
+
 								item[xmax][y1].setText(pos[xmax][y].replaceAll("/", "／").replaceAll("&", "＆"));
 								if (y1 != 0) {
 									item[xmax][y1].addActionListener(new myListener(xmax, y1));
@@ -192,7 +192,7 @@ public class FVS {
 
 			} catch (Exception e) {
 				e.printStackTrace();
-				 logger.log(Level.SEVERE, "ERROR:", e);
+				logger.log(Level.SEVERE, "ERROR:", e);
 			}
 			return true;
 		}
