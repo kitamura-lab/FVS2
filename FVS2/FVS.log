@@ -1,0 +1,8 @@
+5 18, 2016 10:18:04 午後 fvs.kitamura.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:D:\TestFVS\QB\MVI_0101.MP4
+5 18, 2016 10:18:06 午後 fvs.kitamura.FrameAnalyzer <init>
+構成: Before getBufferedImage:D:\TestFVS\QB\MVI_0101.MP4
+5 18, 2016 10:18:06 午後 fvs.kitamura.FrameAnalyzer <init>
+構成: After getBufferedImage:D:\TestFVS\QB\MVI_0101.MP4
+5 18, 2016 10:18:06 午後 fvs.kitamura.SortVideo <init>
+構成: D:\TestFVS\QB\MVI_0101.MP4:147

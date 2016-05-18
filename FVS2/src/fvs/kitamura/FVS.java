@@ -81,6 +81,7 @@ public class FVS {
 			for (int j = 0; j < ITEMMAX; j++) {
 				item[i][j] = new JButton();
 				item[i][j].setBorder(border);
+				item[i][j].setForeground(Color.BLACK);
 				item[i][j].setText("");
 			}
 		}
