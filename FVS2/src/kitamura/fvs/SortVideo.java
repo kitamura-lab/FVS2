@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 /**
  * ビデオファイルの整理
@@ -23,7 +24,7 @@ public class SortVideo {
 	static final int ROWMAX = 100;
 
 	/**
-	 * @param args　未使用
+	 * @param args 未使用
 	 */
 	public static void main(String[] args) {
 		final String srcPath = "C:\\Users\\Kitamura\\Documents";
@@ -82,6 +83,7 @@ public class SortVideo {
 					cat = catCounter;
 				try {
 					// 動画ファイルのコピー
+					//status.setText("AAA");
 					FileInputStream fis = new FileInputStream(srcFile);
 					FileChannel srcChannel = fis.getChannel();
 					File destFile = new File(dest, "\\" + cat + "." + item[pos][cat].getText() + "\\" + sfile);

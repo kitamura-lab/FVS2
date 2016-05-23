@@ -16,7 +16,7 @@ public class FrameAnalyzer {
 	int white = 0;
 	
 	/**
-	 * @param args　未使用
+	 * @param args 未使用
 	 */
 	public static void main(String[] args) {
 		new FrameAnalyzer("MVI_4408.mp4",null);

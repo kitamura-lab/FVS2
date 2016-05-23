@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.TransferHandler;
 import javax.swing.border.LineBorder;
@@ -33,7 +34,7 @@ public class FVS {
 	private JFrame frame;
 	private JButton[][] item = new JButton[POSMAX][ITEMMAX];
 	private JPanel panel;
-	//private JLabel label = new JLabel();
+	private JLabel status = new JLabel(""); //途中経過表示用ラベル
 
 	final String version = "2.3a";
 	final String logfile = "FVS.log";
@@ -42,7 +43,7 @@ public class FVS {
 	String[][] menu;
 
 	/**
-	 * @param args 無使用
+	 * @param args 未使用
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -133,6 +134,11 @@ public class FVS {
 		// ドラッグアンドドロップ
 		panel.setTransferHandler(new DropFileHandler());
 	}
+	
+	void setStatus(String mess){
+		status.setText(mess);
+		frame.setVisible(true);
+	}
 
 	// ドラッグアンドドロップハンドラ
 	private class DropFileHandler extends TransferHandler {
@@ -176,8 +182,10 @@ public class FVS {
 					// ディレクトリならビデオソート
 					if (file.isDirectory()){
 						frame.setTitle("FVS" + version + ": " + "Sorting...");
+						//setStatus("Sorting");
 						new SortVideo(file, item, logger);
 						frame.setTitle("FVS" + version + ": " + "Completed");
+						//setStatus("Completed");
 					}
 					// 練習メニューならアイテムを表示
 					else {
@@ -217,11 +225,14 @@ public class FVS {
 						}
 						
 						//メニューボタンの配置
-						panel.setLayout(new GridLayout(ymax, xmax));
+						panel.setLayout(new GridLayout(ymax+1, xmax));
 						for (int i = 0; i < ymax; i++) {
 							for (int j = 0; j < xmax; j++)
 								panel.add(item[j][i]);
-						}						
+						}
+						//途中経過表示ラベルの付加
+						panel.add(status);
+						//status.setText("AAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 					}
 				}
 			} catch (Exception e) {
@@ -231,4 +242,5 @@ public class FVS {
 			return true;
 		}
 	}
+
 }
