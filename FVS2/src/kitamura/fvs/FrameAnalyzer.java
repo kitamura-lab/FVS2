@@ -1,4 +1,4 @@
-package fvs.kitamura;
+package kitamura.fvs;
 
 import java.awt.image.BufferedImage;
 import java.util.logging.Level;
@@ -8,7 +8,7 @@ import com.googlecode.javacv.FFmpegFrameGrabber;
 
 /**
  * @author Kitamura
- *@“®‰æ‚Ì”’‚³‚ğ”»’è
+ *ï¿½@ï¿½ï¿½ï¿½ï¿½Ì”ï¿½ï¿½ï¿½ï¿½ğ”»’ï¿½
  */
 public class FrameAnalyzer {
 	
@@ -24,7 +24,7 @@ public class FrameAnalyzer {
 	FrameAnalyzer(String file, Logger logger){
 		
 		try {
-			//“®‰æ‚ÌÅ‰‚ÌƒtƒŒ[ƒ€‚ğ”²‚«o‚·
+			//ï¿½ï¿½ï¿½ï¿½ÌÅï¿½ï¿½Ìƒtï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ğ”²‚ï¿½ï¿½oï¿½ï¿½
 			logger.log(Level.CONFIG, "FFmpegFrameGrabber:"+file);
 			FFmpegFrameGrabber gr = new FFmpegFrameGrabber(file);
 
@@ -34,10 +34,10 @@ public class FrameAnalyzer {
 			gr.stop();
 			logger.log(Level.CONFIG, "After getBufferedImage:"+file);
 			
-			//ƒtƒŒ[ƒ€‚Ìc‰¡‚ğŠl“¾
+			//ï¿½tï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Ìcï¿½ï¿½ï¿½ï¿½ï¿½lï¿½ï¿½
 			int w = read.getWidth(), h = read.getHeight();
 
-			//ƒtƒŒ[ƒ€‚Ì”’‚³‚ğŒvZ‚·‚é
+			//ï¿½tï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Ì”ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½vï¿½Zï¿½ï¿½ï¿½ï¿½
 			int rgb;
 			int cnt = 0;
 			double sum = 0;
@@ -55,23 +55,23 @@ public class FrameAnalyzer {
 		}
 	}
 
-	//Ô¬•ª‚Ì’Šo
+	//ï¿½Ôï¿½ï¿½ï¿½ï¿½Ì’ï¿½ï¿½o
 	static int r(int c) {
 		return c >> 16 & 0xff;
 	}
 
-	//—Î¬•ª‚Ì’Šo
+	//ï¿½Îï¿½ï¿½ï¿½ï¿½Ì’ï¿½ï¿½o
 	static int g(int c) {
 		return c >> 8 & 0xff;
 	}
 
-	//Â¬•ª‚Ì’Šo
+	//ï¿½Âï¿½ï¿½ï¿½ï¿½Ì’ï¿½ï¿½o
 	static int b(int c) {
 		return c & 0xff;
 	}
 	
 	/**
-	 * @return@”’‚³
+	 * @returnï¿½@ï¿½ï¿½ï¿½ï¿½
 	 */
 	public int getWhite(){
 		return white;

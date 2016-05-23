@@ -1,4 +1,4 @@
-package fvs.kitamura;
+package kitamura.fvs;
 
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 /**
  * @author Kitamura
- * —ûKƒƒjƒ…[‚Ì“Ç‚İ‚İ
+ * ï¿½ï¿½ï¿½Kï¿½ï¿½ï¿½jï¿½ï¿½ï¿½[ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
  */
 public class Schedule {
 
@@ -32,7 +32,7 @@ public class Schedule {
 		new Schedule(new File(file), null);
 	}
 
-	// ƒƒjƒ…[‚ÌŠl“¾
+	// ï¿½ï¿½ï¿½jï¿½ï¿½ï¿½[ï¿½ÌŠlï¿½ï¿½
 	String[][] getMenu() {
 		return menu;
 	}
@@ -41,7 +41,7 @@ public class Schedule {
 		FileInputStream in = null;
 		Workbook wb = null;
 
-		//—ûKƒƒjƒ…[ƒGƒNƒZƒ‹ƒtƒ@ƒCƒ‹‚ÌƒI[ƒvƒ“
+		//ï¿½ï¿½ï¿½Kï¿½ï¿½ï¿½jï¿½ï¿½ï¿½[ï¿½Gï¿½Nï¿½Zï¿½ï¿½ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ÌƒIï¿½[ï¿½vï¿½ï¿½
 		try {
 			in = new FileInputStream(filename);
 			wb = WorkbookFactory.create(in);
@@ -60,7 +60,7 @@ public class Schedule {
 			}
 		}
 
-		//ƒƒjƒ…[‚Ì‰Šú‰»
+		//ï¿½ï¿½ï¿½jï¿½ï¿½ï¿½[ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 		for (int i = 0; i < 20; i++) {
 			for (int j = 0; j < 100; j++)
 				menu[i][j] = "";
@@ -69,7 +69,7 @@ public class Schedule {
 		Sheet sheet = wb.getSheetAt(0);
 		Row row1 = sheet.getRow(ROW0);
 
-		//ƒ|ƒWƒVƒ‡ƒ“–¼‚ÌŠl“¾
+		//ï¿½|ï¿½Wï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÌŠlï¿½ï¿½
 		int poscnt = 0;
 		for (int i = 0; i < COLMAX; i++) {
 			Cell cell = row1.getCell(i + COL0);
@@ -81,7 +81,7 @@ public class Schedule {
 			}
 		}
 
-		//—ûKƒƒjƒ…[‚ÌŠl“¾
+		//ï¿½ï¿½ï¿½Kï¿½ï¿½ï¿½jï¿½ï¿½ï¿½[ï¿½ÌŠlï¿½ï¿½
 		for (int i = 1; i < ROWMAX; i++) {
 			try {
 				Row row = sheet.getRow(i + ROW0);
@@ -90,18 +90,18 @@ public class Schedule {
 					Cell cell = row.getCell(j + COL0);
 					menu[j][i] = cell.toString();
 					CellStyle style = cell.getCellStyle();
-					// ƒƒjƒ…[‚ª‹ó”’‚ÅC¶‘¤‚Éƒ‰ƒCƒ“‚ª‚È‚¢‚È‚çC¶‚Ìƒƒjƒ…[‚ğƒRƒs[
+					// ï¿½ï¿½ï¿½jï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ó”’‚ÅCï¿½ï¿½ï¿½ï¿½ï¿½Éƒï¿½ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½È‚ï¿½Cï¿½ï¿½ï¿½Ìƒï¿½ï¿½jï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Rï¿½sï¿½[
 					if (menu[j][i].equals("") && j > 0 && style.getBorderLeft() == 0) {
 						menu[j][i] = menu[j - 1][i];
 					}
 				}
-				// ƒƒjƒ…[‚ÌPOST‚©END‚ªŒ»‚ê‚½‚çI—¹
+				// ï¿½ï¿½ï¿½jï¿½ï¿½ï¿½[ï¿½ï¿½POSTï¿½ï¿½ENDï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½ï¿½Iï¿½ï¿½
 				if (menu[0][i].equals("POST"))
 					break;
 				if (menu[0][i].equals("END"))
 					break;
 			} catch (Exception e) {
-				//ƒGƒNƒZƒ‹ƒtƒ@ƒCƒ‹‚ÌI’[‚Ü‚Å“’BI—¹
+				//ï¿½Gï¿½Nï¿½Zï¿½ï¿½ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ÌIï¿½[ï¿½Ü‚Å“ï¿½ï¿½Bï¿½Iï¿½ï¿½
 				// e.printStackTrace();
 				// logger.log(Level.SEVERE, "ERROR:", e);
 				break;

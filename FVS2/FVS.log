@@ -1,8 +1,397 @@
-5 18, 2016 10:18:04 午後 fvs.kitamura.FrameAnalyzer <init>
-構成: FFmpegFrameGrabber:D:\TestFVS\QB\MVI_0101.MP4
-5 18, 2016 10:18:06 午後 fvs.kitamura.FrameAnalyzer <init>
-構成: Before getBufferedImage:D:\TestFVS\QB\MVI_0101.MP4
-5 18, 2016 10:18:06 午後 fvs.kitamura.FrameAnalyzer <init>
-構成: After getBufferedImage:D:\TestFVS\QB\MVI_0101.MP4
-5 18, 2016 10:18:06 午後 fvs.kitamura.SortVideo <init>
-構成: D:\TestFVS\QB\MVI_0101.MP4:147
+5 23, 2016 3:33:39 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4408.MP4
+5 23, 2016 3:33:41 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4408.MP4
+5 23, 2016 3:33:41 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4408.MP4
+5 23, 2016 3:33:41 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4408.MP4:152
+5 23, 2016 3:33:41 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4409.MP4
+5 23, 2016 3:33:41 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4409.MP4
+5 23, 2016 3:33:41 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4409.MP4
+5 23, 2016 3:33:41 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4409.MP4:160
+5 23, 2016 3:33:41 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4410.MP4
+5 23, 2016 3:33:41 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4410.MP4
+5 23, 2016 3:33:41 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4410.MP4
+5 23, 2016 3:33:41 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4410.MP4:150
+5 23, 2016 3:33:42 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4411.MP4
+5 23, 2016 3:33:42 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4411.MP4
+5 23, 2016 3:33:42 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4411.MP4
+5 23, 2016 3:33:42 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4411.MP4:164
+5 23, 2016 3:33:42 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4412.MP4
+5 23, 2016 3:33:42 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4412.MP4
+5 23, 2016 3:33:42 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4412.MP4
+5 23, 2016 3:33:42 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4412.MP4:10
+5 23, 2016 3:33:42 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4413.MP4
+5 23, 2016 3:33:42 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4413.MP4
+5 23, 2016 3:33:42 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4413.MP4
+5 23, 2016 3:33:42 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4413.MP4:144
+5 23, 2016 3:33:42 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4414.MP4
+5 23, 2016 3:33:42 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4414.MP4
+5 23, 2016 3:33:42 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4414.MP4
+5 23, 2016 3:33:42 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4414.MP4:137
+5 23, 2016 3:33:42 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4415.MP4
+5 23, 2016 3:33:42 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4415.MP4
+5 23, 2016 3:33:42 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4415.MP4
+5 23, 2016 3:33:42 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4415.MP4:2
+5 23, 2016 3:33:42 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4416.MP4
+5 23, 2016 3:33:42 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4416.MP4
+5 23, 2016 3:33:42 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4416.MP4
+5 23, 2016 3:33:42 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4416.MP4:122
+5 23, 2016 3:33:42 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4417.MP4
+5 23, 2016 3:33:42 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4417.MP4
+5 23, 2016 3:33:42 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4417.MP4
+5 23, 2016 3:33:42 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4417.MP4:152
+5 23, 2016 3:33:42 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4418.MP4
+5 23, 2016 3:33:42 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4418.MP4
+5 23, 2016 3:33:42 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4418.MP4
+5 23, 2016 3:33:42 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4418.MP4:149
+5 23, 2016 3:33:42 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4419.MP4
+5 23, 2016 3:33:42 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4419.MP4
+5 23, 2016 3:33:42 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4419.MP4
+5 23, 2016 3:33:42 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4419.MP4:133
+5 23, 2016 3:33:42 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4420.MP4
+5 23, 2016 3:33:42 午後 kitamura.fvs.FrameAnalyzer <init>
+重大: ERROR:
+com.googlecode.javacv.FrameGrabber$Exception: avformat_open_input() error -1094995529: Could not open input "C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4420.MP4". (Has setFormat() been called?)
+	at com.googlecode.javacv.FFmpegFrameGrabber.startUnsafe(FFmpegFrameGrabber.java:354)
+	at com.googlecode.javacv.FFmpegFrameGrabber.start(FFmpegFrameGrabber.java:308)
+	at kitamura.fvs.FrameAnalyzer.<init>(FrameAnalyzer.java:31)
+	at kitamura.fvs.SortVideo.<init>(SortVideo.java:60)
+	at kitamura.fvs.FVS$DropFileHandler.importData(FVS.java:179)
+	at javax.swing.TransferHandler$DropHandler.drop(Unknown Source)
+	at java.awt.dnd.DropTarget.drop(Unknown Source)
+	at javax.swing.TransferHandler$SwingDropTarget.drop(Unknown Source)
+	at sun.awt.dnd.SunDropTargetContextPeer.processDropMessage(Unknown Source)
+	at sun.awt.dnd.SunDropTargetContextPeer$EventDispatcher.dispatchDropEvent(Unknown Source)
+	at sun.awt.dnd.SunDropTargetContextPeer$EventDispatcher.dispatchEvent(Unknown Source)
+	at sun.awt.dnd.SunDropTargetEvent.dispatch(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.processDropTargetEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+
+5 23, 2016 3:33:42 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4420.MP4:0
+5 23, 2016 3:33:42 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4421.MP4
+5 23, 2016 3:33:42 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4421.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4421.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4421.MP4:135
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4422.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4422.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4422.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4422.MP4:135
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4423.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4423.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4423.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4423.MP4:150
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4424.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4424.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4424.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4424.MP4:149
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4425.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4425.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4425.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4425.MP4:141
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4426.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4426.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4426.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4426.MP4:8
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4427.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+重大: ERROR:
+com.googlecode.javacv.FrameGrabber$Exception: avformat_open_input() error -1094995529: Could not open input "C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4427.MP4". (Has setFormat() been called?)
+	at com.googlecode.javacv.FFmpegFrameGrabber.startUnsafe(FFmpegFrameGrabber.java:354)
+	at com.googlecode.javacv.FFmpegFrameGrabber.start(FFmpegFrameGrabber.java:308)
+	at kitamura.fvs.FrameAnalyzer.<init>(FrameAnalyzer.java:31)
+	at kitamura.fvs.SortVideo.<init>(SortVideo.java:60)
+	at kitamura.fvs.FVS$DropFileHandler.importData(FVS.java:179)
+	at javax.swing.TransferHandler$DropHandler.drop(Unknown Source)
+	at java.awt.dnd.DropTarget.drop(Unknown Source)
+	at javax.swing.TransferHandler$SwingDropTarget.drop(Unknown Source)
+	at sun.awt.dnd.SunDropTargetContextPeer.processDropMessage(Unknown Source)
+	at sun.awt.dnd.SunDropTargetContextPeer$EventDispatcher.dispatchDropEvent(Unknown Source)
+	at sun.awt.dnd.SunDropTargetContextPeer$EventDispatcher.dispatchEvent(Unknown Source)
+	at sun.awt.dnd.SunDropTargetEvent.dispatch(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.processDropTargetEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+
+5 23, 2016 3:33:43 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4427.MP4:0
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4428.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4428.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4428.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4428.MP4:145
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4429.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4429.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4429.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4429.MP4:0
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4430.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4430.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4430.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4430.MP4:25
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4431.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4431.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4431.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4431.MP4:141
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4432.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4432.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4432.MP4
+5 23, 2016 3:33:43 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4432.MP4:123
+5 23, 2016 3:33:44 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4433.MP4
+5 23, 2016 3:33:44 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4433.MP4
+5 23, 2016 3:33:44 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4433.MP4
+5 23, 2016 3:33:44 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4433.MP4:140
+5 23, 2016 3:33:44 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4434.MP4
+5 23, 2016 3:33:44 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4434.MP4
+5 23, 2016 3:33:44 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4434.MP4
+5 23, 2016 3:33:44 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4434.MP4:0
+5 23, 2016 3:33:44 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4435.MP4
+5 23, 2016 3:33:44 午後 kitamura.fvs.FrameAnalyzer <init>
+重大: ERROR:
+com.googlecode.javacv.FrameGrabber$Exception: avformat_open_input() error -1094995529: Could not open input "C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4435.MP4". (Has setFormat() been called?)
+	at com.googlecode.javacv.FFmpegFrameGrabber.startUnsafe(FFmpegFrameGrabber.java:354)
+	at com.googlecode.javacv.FFmpegFrameGrabber.start(FFmpegFrameGrabber.java:308)
+	at kitamura.fvs.FrameAnalyzer.<init>(FrameAnalyzer.java:31)
+	at kitamura.fvs.SortVideo.<init>(SortVideo.java:60)
+	at kitamura.fvs.FVS$DropFileHandler.importData(FVS.java:179)
+	at javax.swing.TransferHandler$DropHandler.drop(Unknown Source)
+	at java.awt.dnd.DropTarget.drop(Unknown Source)
+	at javax.swing.TransferHandler$SwingDropTarget.drop(Unknown Source)
+	at sun.awt.dnd.SunDropTargetContextPeer.processDropMessage(Unknown Source)
+	at sun.awt.dnd.SunDropTargetContextPeer$EventDispatcher.dispatchDropEvent(Unknown Source)
+	at sun.awt.dnd.SunDropTargetContextPeer$EventDispatcher.dispatchEvent(Unknown Source)
+	at sun.awt.dnd.SunDropTargetEvent.dispatch(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.processDropTargetEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+
+5 23, 2016 3:33:44 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4435.MP4:0
+5 23, 2016 3:33:44 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4436.MP4
+5 23, 2016 3:33:44 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4436.MP4
+5 23, 2016 3:33:44 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4436.MP4
+5 23, 2016 3:33:44 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4436.MP4:0
+5 23, 2016 3:33:44 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4437.MP4
+5 23, 2016 3:33:44 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4437.MP4
+5 23, 2016 3:33:44 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4437.MP4
+5 23, 2016 3:33:44 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4437.MP4:140
+5 23, 2016 3:33:44 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4438.MP4
+5 23, 2016 3:33:44 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4438.MP4
+5 23, 2016 3:33:44 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4438.MP4
+5 23, 2016 3:33:44 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4438.MP4:144
+5 23, 2016 3:33:44 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4439.MP4
+5 23, 2016 3:33:44 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4439.MP4
+5 23, 2016 3:33:44 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4439.MP4
+5 23, 2016 3:33:44 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4439.MP4:0
+5 23, 2016 3:33:44 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4440.MP4
+5 23, 2016 3:33:44 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4440.MP4
+5 23, 2016 3:33:44 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4440.MP4
+5 23, 2016 3:33:44 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4440.MP4:136
+5 23, 2016 3:33:45 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4441.MP4
+5 23, 2016 3:33:45 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4441.MP4
+5 23, 2016 3:33:45 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4441.MP4
+5 23, 2016 3:33:45 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4441.MP4:141
+5 23, 2016 3:33:45 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: FFmpegFrameGrabber:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4442.MP4
+5 23, 2016 3:33:45 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: Before getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4442.MP4
+5 23, 2016 3:33:45 午後 kitamura.fvs.FrameAnalyzer <init>
+構成: After getBufferedImage:C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4442.MP4
+5 23, 2016 3:33:45 午後 kitamura.fvs.SortVideo <init>
+構成: C:\Users\kitamura\Desktop\Fighters\FVS\SB\MVI_4442.MP4:0

@@ -1,4 +1,4 @@
-package fvs.kitamura;
+package kitamura.fvs;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

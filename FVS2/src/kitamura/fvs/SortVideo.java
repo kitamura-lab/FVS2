@@ -1,4 +1,4 @@
-package fvs.kitamura;
+package kitamura.fvs;
 
 import java.awt.Color;
 import java.io.File;
@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 import javax.swing.JButton;
 
 /**
- * @author Kitamura “®‰æ‚Ì•ª—Ş
+ * @author Kitamura ï¿½ï¿½ï¿½ï¿½Ì•ï¿½ï¿½ï¿½
  */
 public class SortVideo {
 
@@ -32,14 +32,14 @@ public class SortVideo {
 
 	SortVideo(File src, JButton[][] item, Logger logger) {
 
-		// ƒ|ƒWƒVƒ‡ƒ“‚Ì—ñ‚ğŒŸõ‚·‚é
+		// ï¿½|ï¿½Wï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½Ì—ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		int pos = 0;
 		for (pos = 0; pos < COLMAX - 1; pos++) {
 			if (item[pos][0].getText().equals(src.getName()))
 				break;
 		}
 
-		// SortedƒtƒHƒ‹ƒ_‚ğ¶¬‚·‚é
+		// Sortedï¿½tï¿½Hï¿½ï¿½ï¿½_ï¿½ğ¶ï¿½ï¿½ï¿½ï¿½ï¿½
 		File dest = new File(src.getParent() + "\\Sorted" + src.getName());
 		if (!dest.exists())
 			dest.mkdir();
@@ -52,35 +52,35 @@ public class SortVideo {
 		for (String sfile : sfiles) {
 			File srcFile = new File(src, sfile);
 
-			// MP4ƒtƒ@ƒCƒ‹ˆÈŠO‚Í”ò‚Î‚·
+			// MP4ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ÈŠOï¿½Í”ï¿½Î‚ï¿½
 			if (!srcFile.getPath().endsWith("MP4"))
 				continue;
 
-			// “®‰æ‚Ì”’‚³‚ğŠl“¾
+			// ï¿½ï¿½ï¿½ï¿½Ì”ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½lï¿½ï¿½
 			int white = new FrameAnalyzer(srcFile.getAbsolutePath(), logger).getWhite();
 			logger.log(Level.CONFIG, srcFile.getAbsolutePath() + ":" + white);
 
 			int cat = 0;
 
-			// •–‹‚Ìˆ—
+			// ï¿½ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
 			if (white < whiteBoundary)
 				cat = 0;
-			// —ûK“®‰æ‚Ìˆ—
+			// ï¿½ï¿½ï¿½Kï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
 			else {
 				if (catOfPreviousFile == 0) {
 					cat = ++catCounter;
-					// —ûKƒƒjƒ…[ƒ{ƒ^ƒ“‚ªOFF‚Ì‚Í”ò‚Î‚·
+					// ï¿½ï¿½ï¿½Kï¿½ï¿½ï¿½jï¿½ï¿½ï¿½[ï¿½{ï¿½^ï¿½ï¿½ï¿½ï¿½OFFï¿½Ìï¿½ï¿½Í”ï¿½Î‚ï¿½
 					while (item[pos][cat].getForeground() == Color.WHITE) {
 						cat = ++catCounter;
 					}
-					// —ûKƒJƒeƒSƒŠ‚ÌƒtƒHƒ‹ƒ_‚ğì‚é
+					// ï¿½ï¿½ï¿½Kï¿½Jï¿½eï¿½Sï¿½ï¿½ï¿½Ìƒtï¿½Hï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½
 					File catFolder = new File(dest, "" + cat + "." + item[pos][cat].getText());
 					if (!catFolder.exists())
 						catFolder.mkdir();
 				} else
 					cat = catCounter;
 				try {
-					// —ûK“®‰æ‚ÌƒRƒs[
+					// ï¿½ï¿½ï¿½Kï¿½ï¿½ï¿½ï¿½ÌƒRï¿½sï¿½[
 					FileInputStream fis = new FileInputStream(srcFile);
 					FileChannel srcChannel = fis.getChannel();
 					File destFile = new File(dest, "\\" + cat + "." + item[pos][cat].getText() + "\\" + sfile);
