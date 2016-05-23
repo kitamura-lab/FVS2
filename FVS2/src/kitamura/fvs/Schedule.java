@@ -12,8 +12,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * 練習メニューの読み込み
  * @author Kitamura
- * ���K���j���[�̓ǂݍ���
+ * 
  */
 public class Schedule {
 
@@ -32,7 +33,7 @@ public class Schedule {
 		new Schedule(new File(file), null);
 	}
 
-	// ���j���[�̊l��
+	// メニュの読み出し
 	String[][] getMenu() {
 		return menu;
 	}
@@ -41,7 +42,7 @@ public class Schedule {
 		FileInputStream in = null;
 		Workbook wb = null;
 
-		//���K���j���[�G�N�Z���t�@�C���̃I�[�v��
+		//メニューファイルのオープン
 		try {
 			in = new FileInputStream(filename);
 			wb = WorkbookFactory.create(in);
@@ -60,16 +61,16 @@ public class Schedule {
 			}
 		}
 
-		//���j���[�̏�����
+		//メニューアイテムの初期化
 		for (int i = 0; i < 20; i++) {
 			for (int j = 0; j < 100; j++)
 				menu[i][j] = "";
 		}
 
+		// メニューの解析
 		Sheet sheet = wb.getSheetAt(0);
 		Row row1 = sheet.getRow(ROW0);
 
-		//�|�W�V�������̊l��
 		int poscnt = 0;
 		for (int i = 0; i < COLMAX; i++) {
 			Cell cell = row1.getCell(i + COL0);
@@ -81,7 +82,6 @@ public class Schedule {
 			}
 		}
 
-		//���K���j���[�̊l��
 		for (int i = 1; i < ROWMAX; i++) {
 			try {
 				Row row = sheet.getRow(i + ROW0);
@@ -90,18 +90,18 @@ public class Schedule {
 					Cell cell = row.getCell(j + COL0);
 					menu[j][i] = cell.toString();
 					CellStyle style = cell.getCellStyle();
-					// ���j���[���󔒂ŁC�����Ƀ��C�����Ȃ��Ȃ�C���̃��j���[���R�s�[
+					// メニューの左に境がなければ，コピー
 					if (menu[j][i].equals("") && j > 0 && style.getBorderLeft() == 0) {
 						menu[j][i] = menu[j - 1][i];
 					}
 				}
-				// ���j���[��POST��END�����ꂽ��I��
+				// POSTまたはENDで修了
 				if (menu[0][i].equals("POST"))
 					break;
 				if (menu[0][i].equals("END"))
 					break;
 			} catch (Exception e) {
-				//�G�N�Z���t�@�C���̏I�[�܂œ��B�I��
+				//セルがなくなれば修了
 				// e.printStackTrace();
 				// logger.log(Level.SEVERE, "ERROR:", e);
 				break;

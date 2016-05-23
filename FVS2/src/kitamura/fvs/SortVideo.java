@@ -11,7 +11,8 @@ import java.util.logging.Logger;
 import javax.swing.JButton;
 
 /**
- * @author Kitamura ����̕���
+ * ビデオファイルの整理
+ * @author Kitamura 
  */
 public class SortVideo {
 
@@ -22,7 +23,7 @@ public class SortVideo {
 	static final int ROWMAX = 100;
 
 	/**
-	 * @param args
+	 * @param args　未使用
 	 */
 	public static void main(String[] args) {
 		final String srcPath = "C:\\Users\\Kitamura\\Documents";
@@ -32,14 +33,14 @@ public class SortVideo {
 
 	SortVideo(File src, JButton[][] item, Logger logger) {
 
-		// �|�W�V�����̗����������
+		// ポジションを検索
 		int pos = 0;
 		for (pos = 0; pos < COLMAX - 1; pos++) {
 			if (item[pos][0].getText().equals(src.getName()))
 				break;
 		}
 
-		// Sorted�t�H���_�𐶐�����
+		// Sortedファイルの作成
 		File dest = new File(src.getParent() + "\\Sorted" + src.getName());
 		if (!dest.exists())
 			dest.mkdir();
@@ -52,35 +53,35 @@ public class SortVideo {
 		for (String sfile : sfiles) {
 			File srcFile = new File(src, sfile);
 
-			// MP4�t�@�C���ȊO�͔�΂�
+			// 拡張子がMP4でなければ飛ばす
 			if (!srcFile.getPath().endsWith("MP4"))
 				continue;
 
-			// ����̔������l��
+			// フレームの明るさを取得
 			int white = new FrameAnalyzer(srcFile.getAbsolutePath(), logger).getWhite();
 			logger.log(Level.CONFIG, srcFile.getAbsolutePath() + ":" + white);
 
 			int cat = 0;
 
-			// �����̏���
+			// フレームが暗ければカテゴリを変える
 			if (white < whiteBoundary)
 				cat = 0;
-			// ���K����̏���
+			// ビデオの整理
 			else {
 				if (catOfPreviousFile == 0) {
 					cat = ++catCounter;
-					// ���K���j���[�{�^����OFF�̎��͔�΂�
+					// メニュボタンがOFFなら飛ばす
 					while (item[pos][cat].getForeground() == Color.WHITE) {
 						cat = ++catCounter;
 					}
-					// ���K�J�e�S���̃t�H���_�����
+					// カテゴリフォルダを作る
 					File catFolder = new File(dest, "" + cat + "." + item[pos][cat].getText());
 					if (!catFolder.exists())
 						catFolder.mkdir();
 				} else
 					cat = catCounter;
 				try {
-					// ���K����̃R�s�[
+					// 動画ファイルのコピー
 					FileInputStream fis = new FileInputStream(srcFile);
 					FileChannel srcChannel = fis.getChannel();
 					File destFile = new File(dest, "\\" + cat + "." + item[pos][cat].getText() + "\\" + sfile);

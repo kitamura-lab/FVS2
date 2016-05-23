@@ -7,15 +7,16 @@ import java.util.logging.Logger;
 import com.googlecode.javacv.FFmpegFrameGrabber;
 
 /**
+ *　フレームの解析
  * @author Kitamura
- *�@����̔����𔻒�
+ *
  */
 public class FrameAnalyzer {
 	
 	int white = 0;
 	
 	/**
-	 * @param args
+	 * @param args　未使用
 	 */
 	public static void main(String[] args) {
 		new FrameAnalyzer("MVI_4408.mp4",null);
@@ -24,7 +25,7 @@ public class FrameAnalyzer {
 	FrameAnalyzer(String file, Logger logger){
 		
 		try {
-			//����̍ŏ��̃t���[���𔲂��o��
+			//動画ファイルから最初のフレームの抽出
 			logger.log(Level.CONFIG, "FFmpegFrameGrabber:"+file);
 			FFmpegFrameGrabber gr = new FFmpegFrameGrabber(file);
 
@@ -34,10 +35,10 @@ public class FrameAnalyzer {
 			gr.stop();
 			logger.log(Level.CONFIG, "After getBufferedImage:"+file);
 			
-			//�t���[���̏c�����l��
+			//フレームの幅と高さを取得
 			int w = read.getWidth(), h = read.getHeight();
 
-			//�t���[���̔������v�Z����
+			//フレームの明るさを計算
 			int rgb;
 			int cnt = 0;
 			double sum = 0;
@@ -55,23 +56,24 @@ public class FrameAnalyzer {
 		}
 	}
 
-	//�Ԑ����̒��o
+	//RGBの赤成分
 	static int r(int c) {
 		return c >> 16 & 0xff;
 	}
 
-	//�ΐ����̒��o
+	//RGBの緑成分
 	static int g(int c) {
 		return c >> 8 & 0xff;
 	}
 
-	//�����̒��o
+	//RGBの青成分
 	static int b(int c) {
 		return c & 0xff;
 	}
 	
 	/**
-	 * @return�@����
+	 * 明るさの取得
+	 * @return　white 明るさ
 	 */
 	public int getWhite(){
 		return white;
