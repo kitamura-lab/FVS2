@@ -28,6 +28,7 @@ import javax.swing.border.LineBorder;
  */
 public class FVS {
 
+	static final int FVSLIGHT = 1;
 	static final int POSMAX = 20; //ポジションの最大数
 	static final int ITEMMAX = 100; //メニューアイテムの最大数
 	
@@ -36,6 +37,7 @@ public class FVS {
 	private JPanel panel;
 	private JLabel status = new JLabel(""); //途中経過表示用ラベル
 
+	private String sysName = "FVS";
 	final String version = "2.3a";
 	final String logfile = "FVS.log";
 	private Logger logger = null;
@@ -87,8 +89,27 @@ public class FVS {
 			}
 		}
 
-		initialize();
+		if(FVSLIGHT == 0) sysName = "FVS";
+		else sysName = "FVSLight";
+		
+		frame = new JFrame();
+		frame.setBounds(100, 100, 500, 600);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setTitle(sysName + version);
+
+		// 練習メニューボタン用パネル
+		panel = new JPanel();
+		frame.getContentPane().add(panel, BorderLayout.CENTER);
+		panel.setLayout(new GridLayout(1, 1));
+
+		// 初期メッセージ
+		panel.add(item[0][0]);
+		item[0][0].setText("ここに練習メニュー，ビデオフォルダの順にドロップしてね！");
+
+		// ドラッグアンドドロップ
+		panel.setTransferHandler(new DropFileHandler());
 	}
+
 
 	/**
 	 * @author Kitamura
@@ -115,25 +136,7 @@ public class FVS {
 		}
 	}
 
-	// FVSの初期化
-	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 500, 600);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setTitle("FVS" + version);
-
-		// 練習メニューボタン用パネル
-		panel = new JPanel();
-		frame.getContentPane().add(panel, BorderLayout.CENTER);
-		panel.setLayout(new GridLayout(1, 1));
-
-		// 初期メッセージ
-		panel.add(item[0][0]);
-		item[0][0].setText("ここに練習メニュー，ビデオフォルダの順にドロップしてね！");
-
-		// ドラッグアンドドロップ
-		panel.setTransferHandler(new DropFileHandler());
-	}
+	
 	
 	void setStatus(String mess){
 		status.setText(mess);
@@ -181,10 +184,10 @@ public class FVS {
 				for (File file : files) {
 					// ディレクトリならビデオソート
 					if (file.isDirectory()){
-						frame.setTitle("FVS" + version + ": " + "Sorting...");
+						frame.setTitle(sysName + version + ": " + "Sorting...");
 						//setStatus("Sorting");
 						new SortVideo(file, item, logger);
-						frame.setTitle("FVS" + version + ": " + "Completed");
+						frame.setTitle(sysName + version + ": " + "Completed");
 						//setStatus("Completed");
 					}
 					// 練習メニューならアイテムを表示
