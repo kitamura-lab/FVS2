@@ -86,8 +86,13 @@ public class FVS {
 				item[i][j] = new JButton();
 				item[i][j].setBorder(border);
 				item[i][j].setForeground(Color.BLACK);
+
 				item[i][j].setText("");
 			}
+			if (!Common.FVSTT)
+				item[i][0].setBackground(new Color(153, 255, 255));
+			else
+				item[i][0].setBackground(new Color(255, 255, 153));
 		}
 
 		if (!Common.FVSTT)
@@ -99,22 +104,22 @@ public class FVS {
 		frame.setBounds(100, 100, 500, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle(sysName + version);
-		frame.getContentPane().setBackground(Color.red);
+		// frame.getContentPane().setBackground(Color.red);
 
 		// 練習メニューボタン用パネル
 		panel = new JPanel();
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(new GridLayout(1, 1));
-		panel.setBackground(Color.red);
+		// panel.setBackground(Color.red);
 
 		// 初期メッセージ
 		panel.add(item[0][0]);
 		if (!Common.FVSTT) {
 			item[0][0].setText("ここに練習メニュー，ビデオフォルダの順にドロップしてね！");
-			item[0][0].setBackground(new Color(153,255,255));
+			//item[0][0].setBackground(new Color(153, 255, 255));
 		} else {
 			item[0][0].setText("ここにTeamTimeメニュー，ビデオフォルダの順にドロップしてね！");
-			item[0][0].setBackground(new Color(255,255,153));
+			//item[0][0].setBackground(new Color(255, 255, 153));
 		}
 
 		// ドラッグアンドドロップ
