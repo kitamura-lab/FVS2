@@ -9,11 +9,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
 
 /**
  * ビデオファイルの整理
- * @author Kitamura 
+ * 
+ * @author Kitamura
  */
 public class SortVideo {
 
@@ -24,7 +24,8 @@ public class SortVideo {
 	static final int ROWMAX = 100;
 
 	/**
-	 * @param args 未使用
+	 * @param args
+	 *            未使用
 	 */
 	public static void main(String[] args) {
 		final String srcPath = "C:\\Users\\Kitamura\\Documents";
@@ -42,9 +43,14 @@ public class SortVideo {
 		}
 
 		// Sortedファイルの作成
-		File dest = new File(src.getParent() + "\\Sorted" + src.getName());
+		File dest = new File(src.getParent() + "\\Sorted");
 		if (!dest.exists())
 			dest.mkdir();
+		if (!Common.FVSTT) {
+			dest = new File(src.getParent() + "\\Sorted\\" + src.getName());
+			if (!dest.exists())
+				dest.mkdir();
+		}
 
 		String[] sfiles = src.list();
 
@@ -76,17 +82,44 @@ public class SortVideo {
 						cat = ++catCounter;
 					}
 					// カテゴリフォルダを作る
-					File catFolder = new File(dest, "" + cat + "." + item[pos][cat].getText());
+					if (Common.FVSTT) {
+						String folderPath = item[pos][cat].getText();
+						int index = 0;
+						while (folderPath.indexOf("\\", index) != -1) {
+							logger.log(Level.CONFIG,
+									"TEST:" + folderPath.substring(0, folderPath.indexOf("\\", index)));
+							File folder = new File(dest,
+									"\\" + folderPath.substring(0, folderPath.indexOf("\\", index)) + "\\");
+							if (!folder.exists())
+								folder.mkdir();
+							index = folderPath.indexOf("\\", folderPath.indexOf("\\", index) + 1);
+							if (index < 0)
+								break;
+						}
+					}
+
+					File catFolder;
+					if (!Common.FVSTT) {
+						catFolder = new File(dest, "" + cat + "." + item[pos][cat].getText());
+					} else {
+						catFolder = new File(dest, "\\" + item[pos][cat].getText() + "\\");
+					}
+
 					if (!catFolder.exists())
 						catFolder.mkdir();
 				} else
 					cat = catCounter;
 				try {
 					// 動画ファイルのコピー
-					//status.setText("AAA");
+					// status.setText("AAA");
 					FileInputStream fis = new FileInputStream(srcFile);
 					FileChannel srcChannel = fis.getChannel();
-					File destFile = new File(dest, "\\" + cat + "." + item[pos][cat].getText() + "\\" + sfile);
+					File destFile;
+					if (!Common.FVSTT) {
+						destFile = new File(dest, "\\" + cat + "." + item[pos][cat].getText() + "\\" + sfile);
+					} else {
+						destFile = new File(dest, "\\" + item[pos][cat].getText() + "\\" + sfile);
+					}
 					FileOutputStream fos = new FileOutputStream(destFile);
 					FileChannel destChannel = fos.getChannel();
 					srcChannel.transferTo(0, srcChannel.size(), destChannel);
