@@ -87,6 +87,7 @@ public class FVS {
 				item[i][j] = new JButton();
 				item[i][j].setBorder(border);
 				item[i][j].setForeground(Color.BLACK);
+				item[i][j].setBackground(Color.WHITE);
 
 				item[i][j].setText("");
 			}
@@ -117,10 +118,10 @@ public class FVS {
 		panel.add(item[0][0]);
 		if (!Common.FVSTT) {
 			item[0][0].setText("ここに練習メニュー，ビデオフォルダの順にドロップしてね！");
-			//item[0][0].setBackground(new Color(153, 255, 255));
+			// item[0][0].setBackground(new Color(153, 255, 255));
 		} else {
 			item[0][0].setText("ここにTeamTimeメニュー，ビデオフォルダの順にドロップしてね！");
-			//item[0][0].setBackground(new Color(255, 255, 153));
+			// item[0][0].setBackground(new Color(255, 255, 153));
 		}
 
 		// ドラッグアンドドロップ
@@ -141,19 +142,19 @@ public class FVS {
 
 		// 練習メニューボタンのON/OFF
 		public void actionPerformed(ActionEvent e) {
+
 			if (item[x][y].getBackground() == Color.WHITE && item[x][y].getForeground() == Color.BLACK) {
+				//System.out.println("WB");
 				item[x][y].setBackground(Color.BLACK);
 				item[x][y].setForeground(Color.WHITE);
-			} 
-			if (item[x][y].getBackground() == Color.BLACK && item[x][y].getForeground() == Color.WHITE) {
+			} else if (item[x][y].getBackground() == Color.BLACK && item[x][y].getForeground() == Color.WHITE) {
+				//System.out.println("BW");
 				item[x][y].setBackground(Color.WHITE);
 				item[x][y].setForeground(Color.BLACK);
-			}
-			if (item[x][y].getBackground() == Color.YELLOW && item[x][y].getForeground() == Color.BLACK) {
+			} else if (item[x][y].getBackground() == Color.YELLOW && item[x][y].getForeground() == Color.BLACK) {
 				item[x][y].setBackground(Color.BLACK);
 				item[x][y].setForeground(Color.YELLOW);
-			}
-			if (item[x][y].getBackground() == Color.BLACK && item[x][y].getForeground() == Color.YELLOW) {
+			} else if (item[x][y].getBackground() == Color.BLACK && item[x][y].getForeground() == Color.YELLOW) {
 				item[x][y].setBackground(Color.YELLOW);
 				item[x][y].setForeground(Color.BLACK);
 			}
@@ -238,18 +239,17 @@ public class FVS {
 								// 不適切な文字コードを置換
 								item[xmax][y1].setText(
 										menu[xmax][y].replaceAll("/", "／").replaceAll("&", "＆").replaceAll("\n", " "));
-								
 
 								// メニューをクリック可能に
 								if (y1 != 0) {
 									item[xmax][y1].addActionListener(new myListener(xmax, y1));
-									//item[xmax][y1].setBackground(Color.WHITE);
+									// item[xmax][y1].setBackground(Color.WHITE);
 									item[xmax][y1].setForeground(Color.BLACK);
-									if(with[xmax][y]==1) {
+									if (with[xmax][y] == 1) {
 										item[xmax][y1].setBackground(Color.YELLOW);
-										System.out.println("Button:"+item[xmax][y1].getText());
-									}
-									else item[xmax][y1].setBackground(Color.WHITE);
+										System.out.println("Button:" + item[xmax][y1].getText());
+									} else
+										item[xmax][y1].setBackground(Color.WHITE);
 								}
 								y1++;
 							}

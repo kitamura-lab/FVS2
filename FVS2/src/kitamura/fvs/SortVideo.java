@@ -81,7 +81,7 @@ public class SortVideo {
 				if (catOfPreviousFile == 0) {
 					cat = ++catCounter;
 					// メニュボタンがOFFなら飛ばす
-					while (item[pos][cat].getForeground() == Color.WHITE) {
+					while (item[pos][cat].getBackground() == Color.BLACK) {
 						cat = ++catCounter;
 					}
 					// カテゴリフォルダを作る
@@ -103,7 +103,10 @@ public class SortVideo {
 
 					File catFolder;
 					if (!Common.FVSTT) {
-						catFolder = new File(dest, "" + cat + "." + item[pos][cat].getText());
+						if (item[pos][cat].getBackground() == Color.WHITE)
+							catFolder = new File(dest, "" + cat + "." + item[pos][cat].getText());
+						else
+							catFolder = new File(dest, "" + item[pos][cat].getText());
 					} else {
 						catFolder = new File(dest, "\\" + item[pos][cat].getText() + "\\");
 					}
@@ -119,7 +122,10 @@ public class SortVideo {
 					FileChannel srcChannel = fis.getChannel();
 					File destFile;
 					if (!Common.FVSTT) {
-						destFile = new File(dest, "\\" + cat + "." + item[pos][cat].getText() + "\\" + sfile);
+						if (item[pos][cat].getBackground() == Color.WHITE)
+							destFile = new File(dest, "\\" + cat + "." + item[pos][cat].getText() + "\\" + sfile);
+						else
+							destFile = new File(dest, item[pos][cat].getText() + "\\" + sfile);
 					} else {
 						String extension = "MP4";
 						int lastDotPosition = sfile.lastIndexOf(".");
@@ -129,23 +135,38 @@ public class SortVideo {
 						String filePath = item[pos][cat].getText();
 						String postfix = "";
 						String prefix = "";
-						if(filePath.indexOf("1-W")!=-1) postfix="a";
-						if(filePath.indexOf("2-Lu")!=-1) postfix="b";
-						if(filePath.indexOf("3-V")!=-1) postfix="c";
-						if(filePath.indexOf("4-WV")!=-1) postfix="d";
-						if(filePath.indexOf("Run Drill OFF")!=-1) prefix="RDO";
-						if(filePath.indexOf("Run Drill DEF")!=-1) prefix="RDD";
-						if(filePath.indexOf("Skelly")!=-1) prefix="SKL";
-						if(filePath.indexOf("Pass DEF Drill")!=-1) prefix="PDD";
-						if(filePath.indexOf("Team Time\\OFF")!=-1) prefix="TTO";
-						if(filePath.indexOf("Team Time\\DEF")!=-1) prefix="TTD";
-						if(filePath.indexOf("KC")!=-1) prefix="1KC";
-						if(filePath.indexOf("KR")!=-1) prefix="2KR";
-						if(filePath.indexOf("PC")!=-1) prefix="3PC";
-						if(filePath.indexOf("PR")!=-1) prefix="4PR";
-						if(filePath.indexOf("PAT")!=-1) prefix="5PT";
+						if (filePath.indexOf("1-W") != -1)
+							postfix = "a";
+						if (filePath.indexOf("2-Lu") != -1)
+							postfix = "b";
+						if (filePath.indexOf("3-V") != -1)
+							postfix = "c";
+						if (filePath.indexOf("4-WV") != -1)
+							postfix = "d";
+						if (filePath.indexOf("Run Drill OFF") != -1)
+							prefix = "RDO";
+						if (filePath.indexOf("Run Drill DEF") != -1)
+							prefix = "RDD";
+						if (filePath.indexOf("Skelly") != -1)
+							prefix = "SKL";
+						if (filePath.indexOf("Pass DEF Drill") != -1)
+							prefix = "PDD";
+						if (filePath.indexOf("Team Time\\OFF") != -1)
+							prefix = "TTO";
+						if (filePath.indexOf("Team Time\\DEF") != -1)
+							prefix = "TTD";
+						if (filePath.indexOf("KC") != -1)
+							prefix = "1KC";
+						if (filePath.indexOf("KR") != -1)
+							prefix = "2KR";
+						if (filePath.indexOf("PC") != -1)
+							prefix = "3PC";
+						if (filePath.indexOf("PR") != -1)
+							prefix = "4PR";
+						if (filePath.indexOf("PAT") != -1)
+							prefix = "5PT";
 
-						sfile = prefix + String.format("%03d", videoNo) +postfix+ "." + extension;
+						sfile = prefix + String.format("%03d", videoNo) + postfix + "." + extension;
 						videoNo++;
 						destFile = new File(dest, "\\" + item[pos][cat].getText() + "\\" + sfile);
 						System.out.println("File:" + sfile);
