@@ -54,8 +54,9 @@ public class SortVideo {
 
 		String[] sfiles = src.list();
 
-		int catCounter = 0;
-		int catOfPreviousFile = 0;
+		int catCounter = 0; // カテゴリのカウンタ
+		int catOfPreviousFile = 0; // ひとつ前のカテゴリ
+		int videoNo = 1; // ビデオ番号
 
 		for (String sfile : sfiles) {
 			File srcFile = new File(src, sfile);
@@ -68,11 +69,13 @@ public class SortVideo {
 			int white = new FrameAnalyzer(srcFile.getAbsolutePath(), logger).getWhite();
 			logger.log(Level.CONFIG, srcFile.getAbsolutePath() + ":" + white);
 
-			int cat = 0;
+			int cat = 0; // カテゴリ番号
 
 			// フレームが暗ければカテゴリを変える
-			if (white < whiteBoundary)
-				cat = 0;
+			if (white < whiteBoundary) {
+				cat = 0; // カテゴリ番号をリセット
+				videoNo = 1; // ビデオ番号をリセット
+			}
 			// ビデオの整理
 			else {
 				if (catOfPreviousFile == 0) {
@@ -118,7 +121,34 @@ public class SortVideo {
 					if (!Common.FVSTT) {
 						destFile = new File(dest, "\\" + cat + "." + item[pos][cat].getText() + "\\" + sfile);
 					} else {
+						String extension = "MP4";
+						int lastDotPosition = sfile.lastIndexOf(".");
+						if (lastDotPosition != -1) {
+							extension = sfile.substring(lastDotPosition + 1);
+						}
+						String filePath = item[pos][cat].getText();
+						String postfix = "";
+						String prefix = "";
+						if(filePath.indexOf("1-W")!=-1) postfix="a";
+						if(filePath.indexOf("2-Lu")!=-1) postfix="b";
+						if(filePath.indexOf("3-V")!=-1) postfix="c";
+						if(filePath.indexOf("4-WV")!=-1) postfix="d";
+						if(filePath.indexOf("Run Drill OFF")!=-1) prefix="RDO";
+						if(filePath.indexOf("Run Drill DEF")!=-1) prefix="RDD";
+						if(filePath.indexOf("Skelly")!=-1) prefix="SKL";
+						if(filePath.indexOf("Pass DEF Drill")!=-1) prefix="PDD";
+						if(filePath.indexOf("Team Time\\OFF")!=-1) prefix="TTO";
+						if(filePath.indexOf("Team Time\\DEF")!=-1) prefix="TTD";
+						if(filePath.indexOf("KC")!=-1) prefix="1KC";
+						if(filePath.indexOf("KR")!=-1) prefix="2KR";
+						if(filePath.indexOf("PC")!=-1) prefix="3PC";
+						if(filePath.indexOf("PR")!=-1) prefix="4PR";
+						if(filePath.indexOf("PAT")!=-1) prefix="5PT";
+
+						sfile = prefix + String.format("%03d", videoNo) +postfix+ "." + extension;
+						videoNo++;
 						destFile = new File(dest, "\\" + item[pos][cat].getText() + "\\" + sfile);
+						System.out.println("File:" + sfile);
 					}
 					FileOutputStream fos = new FileOutputStream(destFile);
 					FileChannel destChannel = fos.getChannel();
