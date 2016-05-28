@@ -1,5 +1,5 @@
 package kitamura.fvs;
 
 public final class Common {
-	static boolean FVSTT = true;
+	static boolean FVSTT = false;
 }

@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 
 /**
  * 練習メニューの読み込み
+ * 
  * @author Kitamura
  * 
  */
@@ -24,6 +25,7 @@ public class Schedule {
 	static final int ROWMAX = 100;
 
 	String[][] menu = new String[COLMAX][ROWMAX];
+	int[][] with = new int[COLMAX][ROWMAX];
 
 	/**
 	 * @param args
@@ -38,11 +40,15 @@ public class Schedule {
 		return menu;
 	}
 
+	int[][] getWith() {
+		return with;
+	}
+
 	Schedule(File filename, Logger logger) {
 		FileInputStream in = null;
 		Workbook wb = null;
 
-		//メニューファイルのオープン
+		// メニューファイルのオープン
 		try {
 			in = new FileInputStream(filename);
 			wb = WorkbookFactory.create(in);
@@ -61,10 +67,12 @@ public class Schedule {
 			}
 		}
 
-		//メニューアイテムの初期化
+		// メニューアイテムの初期化
 		for (int i = 0; i < 20; i++) {
-			for (int j = 0; j < 100; j++)
+			for (int j = 0; j < 100; j++) {
 				menu[i][j] = "";
+				with[i][j] = 0;
+			}
 		}
 
 		// メニューの解析
@@ -90,10 +98,19 @@ public class Schedule {
 					Cell cell = row.getCell(j + COL0);
 					menu[j][i] = cell.toString();
 					CellStyle style = cell.getCellStyle();
+					// System.out.println(cell.toString() + ":" +
+					// style.getFillForegroundColor());
+					if (style.getFillForegroundColor() == 0) {
+						with[j][i] = 1;
+						System.out.println(cell.toString() + ":" + style.getFillForegroundColor());
+					}
 					// メニューの左に境がなければ，コピー
 					if (menu[j][i].equals("") && j > 0 && style.getBorderLeft() == 0) {
 						menu[j][i] = menu[j - 1][i];
+						with[j][i] = with[j - 1][i];
 					}
+					// if(style.getFillForegroundColor()==0) menu[j][i] =
+					// "*"+menu[j][i];
 				}
 				// POSTまたはENDで修了
 				if (menu[0][i].equals("POST"))
@@ -101,7 +118,7 @@ public class Schedule {
 				if (menu[0][i].equals("END"))
 					break;
 			} catch (Exception e) {
-				//セルがなくなれば修了
+				// セルがなくなれば修了
 				// e.printStackTrace();
 				// logger.log(Level.SEVERE, "ERROR:", e);
 				break;

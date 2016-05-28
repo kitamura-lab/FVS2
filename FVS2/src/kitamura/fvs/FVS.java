@@ -38,11 +38,12 @@ public class FVS {
 	private JLabel status = new JLabel(""); // 途中経過表示用ラベル
 
 	private String sysName = "FVS";
-	final String version = "2.4";
+	final String version = "2.5";
 	final String logfile = "FVS.log";
 	private Logger logger = null;
 
 	String[][] menu;
+	int[][] with;
 
 	/**
 	 * @param args
@@ -140,11 +141,20 @@ public class FVS {
 
 		// 練習メニューボタンのON/OFF
 		public void actionPerformed(ActionEvent e) {
-			if (item[x][y].getBackground() == Color.WHITE) {
+			if (item[x][y].getBackground() == Color.WHITE && item[x][y].getForeground() == Color.BLACK) {
 				item[x][y].setBackground(Color.BLACK);
 				item[x][y].setForeground(Color.WHITE);
-			} else {
+			} 
+			if (item[x][y].getBackground() == Color.BLACK && item[x][y].getForeground() == Color.WHITE) {
 				item[x][y].setBackground(Color.WHITE);
+				item[x][y].setForeground(Color.BLACK);
+			}
+			if (item[x][y].getBackground() == Color.YELLOW && item[x][y].getForeground() == Color.BLACK) {
+				item[x][y].setBackground(Color.BLACK);
+				item[x][y].setForeground(Color.YELLOW);
+			}
+			if (item[x][y].getBackground() == Color.BLACK && item[x][y].getForeground() == Color.YELLOW) {
+				item[x][y].setBackground(Color.YELLOW);
 				item[x][y].setForeground(Color.BLACK);
 			}
 		}
@@ -204,7 +214,9 @@ public class FVS {
 					}
 					// 練習メニューならアイテムを表示
 					else {
-						menu = new Schedule(file, logger).getMenu(); // メニューを得る
+						Schedule sc = new Schedule(file, logger); // メニューを得る
+						menu = sc.getMenu();
+						with = sc.getWith();
 						int xmax = 0;
 						int ymax = 0;
 						for (xmax = 0; xmax < POSMAX; xmax++) {
@@ -226,12 +238,18 @@ public class FVS {
 								// 不適切な文字コードを置換
 								item[xmax][y1].setText(
 										menu[xmax][y].replaceAll("/", "／").replaceAll("&", "＆").replaceAll("\n", " "));
+								
 
 								// メニューをクリック可能に
 								if (y1 != 0) {
 									item[xmax][y1].addActionListener(new myListener(xmax, y1));
-									item[xmax][y1].setBackground(Color.WHITE);
+									//item[xmax][y1].setBackground(Color.WHITE);
 									item[xmax][y1].setForeground(Color.BLACK);
+									if(with[xmax][y]==1) {
+										item[xmax][y1].setBackground(Color.YELLOW);
+										System.out.println("Button:"+item[xmax][y1].getText());
+									}
+									else item[xmax][y1].setBackground(Color.WHITE);
 								}
 								y1++;
 							}
