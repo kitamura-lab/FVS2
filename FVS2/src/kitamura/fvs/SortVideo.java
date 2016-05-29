@@ -20,23 +20,21 @@ public class SortVideo {
 	final static String destFolder = "SortedFVideo";
 	final static int catBoundary = 2000;
 	final static int whiteBoundary = 30;
-	//static final int COLMAX = 20;
-	//static final int ROWMAX = 100;
 
 	/**
 	 * @param args
 	 *            未使用
 	 */
+	/*
 	public static void main(String[] args) {
 		final String srcPath = "C:\\Users\\Kitamura\\Documents";
 		final String srcFolder = "FVideo";
 		new SortVideo(new File(srcPath, srcFolder), null);
 	}
+	*/
 
 	SortVideo(File src, JButton[][] item) {
 		
-		//Logger log = Common.logger;
-
 		// ポジションを検索
 		int pos = 0;
 		for (pos = 0; pos < Common.POSMAX - 1; pos++) {
