@@ -33,19 +33,15 @@ import javax.swing.border.LineBorder;
  */
 public class FVS {
 
-	// static final int FVSLIGHT = 1;
-	static final int POSMAX = 20; // ポジションの最大数
-	static final int ITEMMAX = 100; // メニューアイテムの最大数
-
 	private JFrame frame;
-	private JButton[][] item = new JButton[POSMAX][ITEMMAX];
+	private JButton[][] item = new JButton[Common.POSMAX][Common.ITEMMAX]; //メニュー用ボタン
 	private JPanel panel;
 	private JLabel status = new JLabel(""); // 途中経過表示用ラベル
 
 	private String sysName = "FVS";
 	final String version = "2.5";
-	final String logfile = "FVS.log";
-	private Logger logger = null;
+	//final String logfile = "FVS.log";
+	//private Logger logger = null;
 
 	String[][] menu;
 	int[][] with;
@@ -73,22 +69,22 @@ public class FVS {
 	public FVS() {
 
 		/* ログファイルの初期化 */
-		logger = Logger.getLogger(this.getClass().getName());
+		Common.logger = Logger.getLogger(this.getClass().getName());
 		try {
-			FileHandler fh = new FileHandler(logfile);
+			FileHandler fh = new FileHandler(Common.LOGFILE);
 			fh.setFormatter(new java.util.logging.SimpleFormatter());
-			logger.addHandler(fh);
+			Common.logger.addHandler(fh);
 		} catch (IOException e) {
 			e.printStackTrace();
 			// logger.log(Level.SEVERE, "ERROR:", e);
 		}
-		logger.setLevel(Level.CONFIG);
+		Common.logger.setLevel(Level.CONFIG);
 
 		LineBorder border = new LineBorder(Color.BLACK, 2, true);
 
 		/* 練習メニューの初期化 */
-		for (int i = 0; i < POSMAX; i++) {
-			for (int j = 0; j < ITEMMAX; j++) {
+		for (int i = 0; i < Common.POSMAX; i++) {
+			for (int j = 0; j < Common.ITEMMAX; j++) {
 				item[i][j] = new JButton();
 				item[i][j].setBorder(border);
 				item[i][j].setForeground(Color.BLACK);
@@ -214,22 +210,22 @@ public class FVS {
 					if (file.isDirectory()) {
 						frame.setTitle(sysName + version + ": " + "Sorting...");
 						// setStatus("Sorting");
-						new SortVideo(file, item, logger);
+						new SortVideo(file, item);
 						frame.setTitle(sysName + version + ": " + "Completed");
 						// setStatus("Completed");
 					}
 					// 練習メニューならアイテムを表示
 					else {
-						Schedule sc = new Schedule(file, logger); // メニューを得る
+						Schedule sc = new Schedule(file); // メニューを得る
 						menu = sc.getMenu();
 						with = sc.getWith();
 						int xmax = 0;
 						int ymax = 0;
-						for (xmax = 0; xmax < POSMAX; xmax++) {
+						for (xmax = 0; xmax < Common.POSMAX; xmax++) {
 							if (menu[xmax][0].equals("")) // ポジションが空白なら終了
 								break;
 							int y1 = 0;
-							for (int y = 0; y < ITEMMAX; y++) {
+							for (int y = 0; y < Common.ITEMMAX; y++) {
 								if (menu[xmax][y].equals("")) // メニューが空白なら飛ばす
 									continue;
 								if (menu[xmax][y].equals("POST")) // メニューがPOSTなら終了
@@ -276,7 +272,7 @@ public class FVS {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
-				logger.log(Level.SEVERE, "ERROR:", e);
+				Common.logger.log(Level.SEVERE, "ERROR:", e);
 			}
 			return true;
 		}

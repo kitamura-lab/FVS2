@@ -1,8 +1,18 @@
 package kitamura.fvs;
 
+import java.util.logging.Logger;
+
+/**
+ * FVS蜈ｱ騾壼､画焚逕ｨ繧ｯ繝ｩ繧ｹ
+ * @author Kitamura
+ *
+ */
 public final class Common {
 	static boolean FVSTT = false;
 	
-	static final int POSMAX = 20; // ポジションの最大数
-	static final int ITEMMAX = 100; // メニューアイテムの最大数
+	static final int POSMAX = 20; // 繝昴ず繧ｷ繝ｧ繝ｳ縺ｮ譛螟ｧ謨ｰ
+	static final int ITEMMAX = 100; // 繝｡繝九Η繝ｼ繧｢繧､繝�繝縺ｮ譛螟ｧ謨ｰ
+	
+	static final String LOGFILE = "FVS.log";
+	static Logger logger = null;
 }

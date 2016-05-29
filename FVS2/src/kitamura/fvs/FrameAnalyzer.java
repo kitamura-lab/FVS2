@@ -2,7 +2,7 @@ package kitamura.fvs;
 
 import java.awt.image.BufferedImage;
 import java.util.logging.Level;
-import java.util.logging.Logger;
+//import java.util.logging.Logger;
 
 import com.googlecode.javacv.FFmpegFrameGrabber;
 
@@ -19,21 +19,21 @@ public class FrameAnalyzer {
 	 * @param args 未使用
 	 */
 	public static void main(String[] args) {
-		new FrameAnalyzer("MVI_4408.mp4",null);
+		new FrameAnalyzer("MVI_4408.mp4");
 	}
 	
-	FrameAnalyzer(String file, Logger logger){
+	FrameAnalyzer(String file){
 		
 		try {
 			//動画ファイルから最初のフレームの抽出
-			logger.log(Level.CONFIG, "FFmpegFrameGrabber:"+file);
+			Common.logger.log(Level.CONFIG, "FFmpegFrameGrabber:"+file);
 			FFmpegFrameGrabber gr = new FFmpegFrameGrabber(file);
 
 			gr.start();
-			logger.log(Level.CONFIG, "Before getBufferedImage:"+file);
+			Common.logger.log(Level.CONFIG, "Before getBufferedImage:"+file);
 			BufferedImage read = gr.grab().getBufferedImage();
 			gr.stop();
-			logger.log(Level.CONFIG, "After getBufferedImage:"+file);
+			Common.logger.log(Level.CONFIG, "After getBufferedImage:"+file);
 			
 			//フレームの幅と高さを取得
 			int w = read.getWidth(), h = read.getHeight();
@@ -52,7 +52,7 @@ public class FrameAnalyzer {
 			white = (int)(sum/cnt);
 		} catch (Exception e) {
 			e.printStackTrace();
-			 logger.log(Level.SEVERE, "ERROR:", e);
+			 Common.logger.log(Level.SEVERE, "ERROR:", e);
 		}
 	}
 

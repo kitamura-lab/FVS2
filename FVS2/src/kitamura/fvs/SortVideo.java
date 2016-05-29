@@ -6,7 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.nio.channels.FileChannel;
 import java.util.logging.Level;
-import java.util.logging.Logger;
+//import java.util.logging.Logger;
 
 import javax.swing.JButton;
 
@@ -20,8 +20,8 @@ public class SortVideo {
 	final static String destFolder = "SortedFVideo";
 	final static int catBoundary = 2000;
 	final static int whiteBoundary = 30;
-	static final int COLMAX = 20;
-	static final int ROWMAX = 100;
+	//static final int COLMAX = 20;
+	//static final int ROWMAX = 100;
 
 	/**
 	 * @param args
@@ -30,14 +30,16 @@ public class SortVideo {
 	public static void main(String[] args) {
 		final String srcPath = "C:\\Users\\Kitamura\\Documents";
 		final String srcFolder = "FVideo";
-		new SortVideo(new File(srcPath, srcFolder), null, null);
+		new SortVideo(new File(srcPath, srcFolder), null);
 	}
 
-	SortVideo(File src, JButton[][] item, Logger logger) {
+	SortVideo(File src, JButton[][] item) {
+		
+		//Logger log = Common.logger;
 
 		// ポジションを検索
 		int pos = 0;
-		for (pos = 0; pos < COLMAX - 1; pos++) {
+		for (pos = 0; pos < Common.POSMAX - 1; pos++) {
 			if (item[pos][0].getText().equals(src.getName()))
 				break;
 		}
@@ -66,8 +68,8 @@ public class SortVideo {
 				continue;
 
 			// フレームの明るさを取得
-			int white = new FrameAnalyzer(srcFile.getAbsolutePath(), logger).getWhite();
-			logger.log(Level.CONFIG, srcFile.getAbsolutePath() + ":" + white);
+			int white = new FrameAnalyzer(srcFile.getAbsolutePath()).getWhite();
+			Common.logger.log(Level.CONFIG, srcFile.getAbsolutePath() + ":" + white);
 
 			int cat = 0; // カテゴリ番号
 
@@ -89,7 +91,7 @@ public class SortVideo {
 						String folderPath = item[pos][cat].getText();
 						int index = 0;
 						while (folderPath.indexOf("\\", index) != -1) {
-							logger.log(Level.CONFIG,
+							Common.logger.log(Level.CONFIG,
 									"TEST:" + folderPath.substring(0, folderPath.indexOf("\\", index)));
 							File folder = new File(dest,
 									"\\" + folderPath.substring(0, folderPath.indexOf("\\", index)) + "\\");
@@ -180,7 +182,7 @@ public class SortVideo {
 					fos.close();
 				} catch (Exception ex) {
 					ex.printStackTrace();
-					logger.log(Level.SEVERE, "ERROR:", ex);
+					Common.logger.log(Level.SEVERE, "ERROR:", ex);
 				}
 			}
 			catOfPreviousFile = cat;

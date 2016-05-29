@@ -9,7 +9,7 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import java.io.*;
 import java.util.logging.Level;
-import java.util.logging.Logger;
+//import java.util.logging.Logger;
 
 /**
  * 練習メニューの読み込み
@@ -21,18 +21,18 @@ public class Schedule {
 
 	static final int ROW0 = 26;
 	static final int COL0 = 2;
-	static final int COLMAX = 20;
-	static final int ROWMAX = 100;
+	//static final int COLMAX = 20;
+	//static final int ROWMAX = 100;
 
-	String[][] menu = new String[COLMAX][ROWMAX];
-	int[][] with = new int[COLMAX][ROWMAX];
+	String[][] menu = new String[Common.POSMAX][Common.ITEMMAX];
+	int[][] with = new int[Common.POSMAX][Common.ITEMMAX];
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		final String file = "C:\\Users\\kitamura\\Documents\\FIGHTERS\\Menu.xlsx";
-		new Schedule(new File(file), null);
+		new Schedule(new File(file));
 	}
 
 	// メニュの読み出し
@@ -44,7 +44,7 @@ public class Schedule {
 		return with;
 	}
 
-	Schedule(File filename, Logger logger) {
+	Schedule(File filename) {
 		FileInputStream in = null;
 		Workbook wb = null;
 
@@ -54,16 +54,16 @@ public class Schedule {
 			wb = WorkbookFactory.create(in);
 		} catch (IOException e) {
 			System.out.println(e.toString());
-			logger.log(Level.SEVERE, "ERROR:", e);
+			Common.logger.log(Level.SEVERE, "ERROR:", e);
 		} catch (InvalidFormatException e) {
 			System.out.println(e.toString());
-			logger.log(Level.SEVERE, "ERROR:", e);
+			Common.logger.log(Level.SEVERE, "ERROR:", e);
 		} finally {
 			try {
 				in.close();
 			} catch (IOException e) {
 				System.out.println(e.toString());
-				logger.log(Level.SEVERE, "ERROR:", e);
+				Common.logger.log(Level.SEVERE, "ERROR:", e);
 			}
 		}
 
@@ -80,7 +80,7 @@ public class Schedule {
 		Row row1 = sheet.getRow(ROW0);
 
 		int poscnt = 0;
-		for (int i = 0; i < COLMAX; i++) {
+		for (int i = 0; i < Common.POSMAX; i++) {
 			Cell cell = row1.getCell(i + COL0);
 			if (cell.toString().equals(""))
 				break;
@@ -90,7 +90,7 @@ public class Schedule {
 			}
 		}
 
-		for (int i = 1; i < ROWMAX; i++) {
+		for (int i = 1; i < Common.ITEMMAX; i++) {
 			try {
 				Row row = sheet.getRow(i + ROW0);
 				for (int j = 0; j < poscnt; j++) {
