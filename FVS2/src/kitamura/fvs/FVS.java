@@ -23,6 +23,11 @@ import javax.swing.TransferHandler;
 import javax.swing.border.LineBorder;
 
 /**
+ * FVS: Fighters Video Sorter<br>
+ * FVSTT: Fighters Video Sorter for Team Time<br>
+ * 練習ビデオを練習メニューに応じて分類するプログラム<br>
+ * 練習ビデオは黒幕が切れ目になっている．<br>
+ * 練習メニューはExcelファイルとして与えられる．<br>
  * @author Yasuhiko Kitamura
  *
  */
