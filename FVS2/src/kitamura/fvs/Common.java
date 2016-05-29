@@ -1,5 +1,8 @@
 package kitamura.fvs;
 
+import java.io.IOException;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -15,4 +18,16 @@ public final class Common {
 	
 	static final String LOGFILE = "FVS.log";
 	static Logger logger = null;
+	
+	static void initLog(String name){
+		logger = Logger.getLogger(name);
+		try {
+			FileHandler fh = new FileHandler(Common.LOGFILE);
+			fh.setFormatter(new java.util.logging.SimpleFormatter());
+			logger.addHandler(fh);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		logger.setLevel(Level.CONFIG);
+	}
 }

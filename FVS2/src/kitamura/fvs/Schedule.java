@@ -24,8 +24,10 @@ public class Schedule {
 	//static final int COLMAX = 20;
 	//static final int ROWMAX = 100;
 
-	String[][] menu = new String[Common.POSMAX][Common.ITEMMAX];
-	int[][] with = new int[Common.POSMAX][Common.ITEMMAX];
+	Menu[][] menu = new Menu[Common.POSMAX][Common.ITEMMAX];
+	
+	//String[][] menu = new String[Common.POSMAX][Common.ITEMMAX];
+	//int[][] with = new int[Common.POSMAX][Common.ITEMMAX];
 
 	/**
 	 * @param args
@@ -36,13 +38,15 @@ public class Schedule {
 	}
 
 	// メニュの読み出し
-	String[][] getMenu() {
+	Menu[][] getMenu() {
 		return menu;
 	}
 
+	/*
 	int[][] getWith() {
 		return with;
 	}
+	*/
 
 	Schedule(File filename) {
 		FileInputStream in = null;
@@ -70,8 +74,9 @@ public class Schedule {
 		// メニューアイテムの初期化
 		for (int i = 0; i < 20; i++) {
 			for (int j = 0; j < 100; j++) {
-				menu[i][j] = "";
-				with[i][j] = 0;
+				menu[i][j] = new Menu();
+				//menu[i][j].name = "";
+				//menu[i][j].with = false;
 			}
 		}
 
@@ -85,7 +90,7 @@ public class Schedule {
 			if (cell.toString().equals(""))
 				break;
 			else {
-				menu[poscnt][0] = cell.toString();
+				menu[poscnt][0].name = cell.toString();
 				poscnt++;
 			}
 		}
@@ -96,26 +101,26 @@ public class Schedule {
 				for (int j = 0; j < poscnt; j++) {
 
 					Cell cell = row.getCell(j + COL0);
-					menu[j][i] = cell.toString();
+					menu[j][i].name = cell.toString();
 					CellStyle style = cell.getCellStyle();
 					// System.out.println(cell.toString() + ":" +
 					// style.getFillForegroundColor());
 					if (style.getFillForegroundColor() == 0) {
-						with[j][i] = 1;
+						menu[j][i].with = true;
 						System.out.println(cell.toString() + ":" + style.getFillForegroundColor());
 					}
 					// メニューの左に境がなければ，コピー
-					if (menu[j][i].equals("") && j > 0 && style.getBorderLeft() == 0) {
+					if (menu[j][i].name.equals("") && j > 0 && style.getBorderLeft() == 0) {
 						menu[j][i] = menu[j - 1][i];
-						with[j][i] = with[j - 1][i];
+						//with[j][i] = with[j - 1][i];
 					}
 					// if(style.getFillForegroundColor()==0) menu[j][i] =
 					// "*"+menu[j][i];
 				}
 				// POSTまたはENDで修了
-				if (menu[0][i].equals("POST"))
+				if (menu[0][i].name.equals("POST"))
 					break;
-				if (menu[0][i].equals("END"))
+				if (menu[0][i].name.equals("END"))
 					break;
 			} catch (Exception e) {
 				// セルがなくなれば修了
