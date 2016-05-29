@@ -35,7 +35,7 @@ import javax.swing.border.LineBorder;
 public class FVS {
 
 	private String sysName = "FVS";
-	private final String version = "2.5a";
+	private final String version = "2.6";
 
 	private JFrame frame;
 	private JButton[][] item = new JButton[Common.POSMAX][Common.ITEMMAX]; // メニュー用ボタン
@@ -199,7 +199,7 @@ public class FVS {
 						frame.setTitle(sysName + version + ": " + "Completed");
 						// setStatus("Completed");
 					}
-					// 練習メニューならアイテムを表示
+					// 練習メニューからアイテムを表示
 					else {
 						Schedule sc = new Schedule(file); // メニューを得る
 						menu = sc.getMenu();

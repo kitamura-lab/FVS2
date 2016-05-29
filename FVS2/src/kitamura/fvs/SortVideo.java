@@ -21,20 +21,8 @@ public class SortVideo {
 	final static int catBoundary = 2000;
 	final static int whiteBoundary = 30;
 
-	/**
-	 * @param args
-	 *            未使用
-	 */
-	/*
-	public static void main(String[] args) {
-		final String srcPath = "C:\\Users\\Kitamura\\Documents";
-		final String srcFolder = "FVideo";
-		new SortVideo(new File(srcPath, srcFolder), null);
-	}
-	*/
-
 	SortVideo(File src, JButton[][] item) {
-		
+
 		// ポジションを検索
 		int pos = 0;
 		for (pos = 0; pos < Common.POSMAX - 1; pos++) {
@@ -54,9 +42,9 @@ public class SortVideo {
 
 		String[] sfiles = src.list();
 
-		int catCounter = 0; // カテゴリのカウンタ
-		int catOfPreviousFile = 0; // ひとつ前のカテゴリ
+		int category = 1; // カテゴリのカウンタ
 		int videoNo = 1; // ビデオ番号
+		int itemIndex = 1; // アイテム番号
 
 		for (String sfile : sfiles) {
 			File srcFile = new File(src, sfile);
@@ -69,24 +57,27 @@ public class SortVideo {
 			int white = new FrameAnalyzer(srcFile.getAbsolutePath()).getWhite();
 			Common.logger.log(Level.CONFIG, srcFile.getAbsolutePath() + ":" + white);
 
-			int cat = 0; // カテゴリ番号
-
 			// フレームが暗ければカテゴリを変える
 			if (white < whiteBoundary) {
-				cat = 0; // カテゴリ番号をリセット
+				if (videoNo != 1) {
+					category++;
+					itemIndex++;
+				}
 				videoNo = 1; // ビデオ番号をリセット
+
 			}
 			// ビデオの整理
 			else {
-				if (catOfPreviousFile == 0) {
-					cat = ++catCounter;
-					// メニュボタンがOFFなら飛ばす
-					while (item[pos][cat].getBackground() == Color.BLACK) {
-						cat = ++catCounter;
-					}
-					// カテゴリフォルダを作る
+				// メニューボタンがOFFなら飛ばす
+				while (item[pos][itemIndex].getBackground() == Color.BLACK) {
+					itemIndex++;
+				}
+				// カテゴリフォルダを作る
+				if (videoNo == 1) {
+
+					// 上位フォルダを作る
 					if (Common.FVSTT) {
-						String folderPath = item[pos][cat].getText();
+						String folderPath = item[pos][itemIndex].getText();
 						int index = 0;
 						while (folderPath.indexOf("\\", index) != -1) {
 							Common.logger.log(Level.CONFIG,
@@ -101,40 +92,43 @@ public class SortVideo {
 						}
 					}
 
+					//カテゴリフォルダを作る
 					File catFolder;
-					if (!Common.FVSTT) {
-						if (item[pos][cat].getBackground() == Color.WHITE)
-							catFolder = new File(dest, "" + cat + "." + item[pos][cat].getText());
-						else
-							catFolder = new File(dest, "" + item[pos][cat].getText());
-					} else {
-						catFolder = new File(dest, "\\" + item[pos][cat].getText() + "\\");
+					if (!Common.FVSTT) {// 通常
+						if (item[pos][itemIndex].getBackground() == Color.WHITE) {// 通常アイテム
+							catFolder = new File(dest, "" + category + "." + item[pos][itemIndex].getText());
+						} else {// withアイテム
+							catFolder = new File(dest, "" + item[pos][itemIndex].getText());
+							category--;
+						}
+					} else {// TeamTime
+						catFolder = new File(dest, "\\" + item[pos][itemIndex].getText() + "\\");
 					}
 
+					System.out.println("Folder" + catFolder);
 					if (!catFolder.exists())
 						catFolder.mkdir();
-				} else
-					cat = catCounter;
+				}
 				try {
 					// 動画ファイルのコピー
-					// status.setText("AAA");
 					FileInputStream fis = new FileInputStream(srcFile);
 					FileChannel srcChannel = fis.getChannel();
 					File destFile;
-					if (!Common.FVSTT) {
-						if (item[pos][cat].getBackground() == Color.WHITE)
-							destFile = new File(dest, "\\" + cat + "." + item[pos][cat].getText() + "\\" + sfile);
-						else
-							destFile = new File(dest, item[pos][cat].getText() + "\\" + sfile);
-					} else {
-						String extension = "MP4";
+					if (!Common.FVSTT) {// FVS
+						if (item[pos][itemIndex].getBackground() == Color.WHITE)// 通常
+							destFile = new File(dest,
+									"\\" + category + "." + item[pos][itemIndex].getText() + "\\" + sfile);
+						else // with
+							destFile = new File(dest, item[pos][itemIndex].getText() + "\\" + sfile);
+					} else {// FVSTT
+						String ext = "MP4"; // 拡張子
 						int lastDotPosition = sfile.lastIndexOf(".");
 						if (lastDotPosition != -1) {
-							extension = sfile.substring(lastDotPosition + 1);
+							ext = sfile.substring(lastDotPosition + 1);
 						}
-						String filePath = item[pos][cat].getText();
-						String postfix = "";
-						String prefix = "";
+						String filePath = item[pos][itemIndex].getText();
+						String postfix = ""; // 接尾句
+						String prefix = ""; // 接頭句
 						if (filePath.indexOf("1-W") != -1)
 							postfix = "a";
 						if (filePath.indexOf("2-Lu") != -1)
@@ -166,11 +160,11 @@ public class SortVideo {
 						if (filePath.indexOf("PAT") != -1)
 							prefix = "5PT";
 
-						sfile = prefix + String.format("%03d", videoNo) + postfix + "." + extension;
-						videoNo++;
-						destFile = new File(dest, "\\" + item[pos][cat].getText() + "\\" + sfile);
-						System.out.println("File:" + sfile);
+						sfile = prefix + String.format("%03d", videoNo) + postfix + "." + ext;
+						destFile = new File(dest, "\\" + item[pos][itemIndex].getText() + "\\" + sfile);
+						//System.out.println("File:" + sfile);
 					}
+					videoNo++;
 					FileOutputStream fos = new FileOutputStream(destFile);
 					FileChannel destChannel = fos.getChannel();
 					srcChannel.transferTo(0, srcChannel.size(), destChannel);
@@ -183,7 +177,6 @@ public class SortVideo {
 					Common.logger.log(Level.SEVERE, "ERROR:", ex);
 				}
 			}
-			catOfPreviousFile = cat;
 		}
 	}
 
