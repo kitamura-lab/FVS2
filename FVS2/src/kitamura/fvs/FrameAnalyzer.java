@@ -2,8 +2,6 @@ package kitamura.fvs;
 
 import java.awt.image.BufferedImage;
 import java.util.logging.Level;
-//import java.util.logging.Logger;
-
 import com.googlecode.javacv.FFmpegFrameGrabber;
 
 /**
@@ -26,14 +24,14 @@ public class FrameAnalyzer {
 		
 		try {
 			//動画ファイルから最初のフレームの抽出
-			Common.logger.log(Level.CONFIG, "FFmpegFrameGrabber:"+file);
+			//Common.logger.log(Level.CONFIG, "FFmpegFrameGrabber:"+file);
 			FFmpegFrameGrabber gr = new FFmpegFrameGrabber(file);
 
 			gr.start();
-			Common.logger.log(Level.CONFIG, "Before getBufferedImage:"+file);
+			//Common.logger.log(Level.CONFIG, "Before getBufferedImage:"+file);
 			BufferedImage read = gr.grab().getBufferedImage();
 			gr.stop();
-			Common.logger.log(Level.CONFIG, "After getBufferedImage:"+file);
+			//Common.logger.log(Level.CONFIG, "After getBufferedImage:"+file);
 			
 			//フレームの幅と高さを取得
 			int w = read.getWidth(), h = read.getHeight();

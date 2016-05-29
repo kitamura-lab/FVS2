@@ -35,7 +35,7 @@ import javax.swing.border.LineBorder;
 public class FVS {
 
 	private String sysName = "FVS";
-	private final String version = "2.6";
+	private final String version = "2.6a";
 
 	private JFrame frame;
 	private JButton[][] item = new JButton[Common.POSMAX][Common.ITEMMAX]; // メニュー用ボタン
@@ -232,7 +232,7 @@ public class FVS {
 									item[xMax][yItem].setForeground(Color.BLACK);
 									if (menu[xMax][yMenu].with) {
 										item[xMax][yItem].setBackground(Color.YELLOW);
-										System.out.println("Button:" + item[xMax][yItem].getText());
+										//System.out.println("Button:" + item[xMax][yItem].getText());
 									} else
 										item[xMax][yItem].setBackground(Color.WHITE);
 								}

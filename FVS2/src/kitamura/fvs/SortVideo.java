@@ -105,7 +105,7 @@ public class SortVideo {
 						catFolder = new File(dest, "\\" + item[pos][itemIndex].getText() + "\\");
 					}
 
-					System.out.println("Folder" + catFolder);
+					//System.out.println("Folder" + catFolder);
 					if (!catFolder.exists())
 						catFolder.mkdir();
 				}
