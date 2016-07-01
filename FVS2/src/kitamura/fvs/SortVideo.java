@@ -50,7 +50,10 @@ public class SortVideo {
 			File srcFile = new File(src, sfile);
 
 			// 拡張子がMP4でなければ飛ばす
-			if (!srcFile.getPath().endsWith("MP4"))
+			if (!srcFile.getPath().endsWith("MP4") && !srcFile.getPath().endsWith("mp4"))
+					//&& !srcFile.getPath().endsWith("MOV") && !srcFile.getPath().endsWith("mov")
+					//&& !srcFile.getPath().endsWith("JPG") && !srcFile.getPath().endsWith("jpg")
+					//&& !srcFile.getPath().endsWith("MOD") && !srcFile.getPath().endsWith("mod"))
 				continue;
 
 			// フレームの明るさを取得
@@ -92,7 +95,7 @@ public class SortVideo {
 						}
 					}
 
-					//カテゴリフォルダを作る
+					// カテゴリフォルダを作る
 					File catFolder;
 					if (!Common.FVSTT) {// 通常
 						if (item[pos][itemIndex].getBackground() == Color.WHITE) {// 通常アイテム
@@ -105,7 +108,7 @@ public class SortVideo {
 						catFolder = new File(dest, "\\" + item[pos][itemIndex].getText() + "\\");
 					}
 
-					//System.out.println("Folder" + catFolder);
+					// System.out.println("Folder" + catFolder);
 					if (!catFolder.exists())
 						catFolder.mkdir();
 				}
@@ -162,7 +165,7 @@ public class SortVideo {
 
 						sfile = prefix + String.format("%03d", videoNo) + postfix + "." + ext;
 						destFile = new File(dest, "\\" + item[pos][itemIndex].getText() + "\\" + sfile);
-						//System.out.println("File:" + sfile);
+						// System.out.println("File:" + sfile);
 					}
 					videoNo++;
 					FileOutputStream fos = new FileOutputStream(destFile);
