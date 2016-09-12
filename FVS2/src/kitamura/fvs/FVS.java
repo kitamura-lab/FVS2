@@ -35,7 +35,7 @@ import javax.swing.border.LineBorder;
 public class FVS {
 
 	private String sysName = "FVS";
-	private final String version = "2.7";
+	private final String version = "2.8";
 
 	private JFrame frame;
 	private JButton[][] item = new JButton[Common.POSMAX][Common.ITEMMAX]; // メニュー用ボタン

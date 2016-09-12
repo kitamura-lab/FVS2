@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.nio.channels.FileChannel;
+import java.util.Calendar;
 import java.util.logging.Level;
 //import java.util.logging.Logger;
 
@@ -20,6 +21,26 @@ public class SortVideo {
 	final static String destFolder = "SortedFVideo";
 	final static int catBoundary = 2000;
 	final static int whiteBoundary = 30;
+	
+	String monthday() {
+		String sMonth;
+		String sDay;
+
+		Calendar calendar = Calendar.getInstance();
+		int month = calendar.get(Calendar.MONTH) + 1;
+		int day = calendar.get(Calendar.DATE);
+
+		if (month < 10)
+			sMonth = "0" + month;
+		else
+			sMonth = "" + month;
+		if (day < 10)
+			sDay = "0" + day;
+		else
+			sDay = "" + day;
+
+		return sMonth + sDay;
+	}
 
 	SortVideo(File src, JButton[][] item) {
 
@@ -163,6 +184,8 @@ public class SortVideo {
 						if (filePath.indexOf("PAT") != -1)
 							prefix = "5PT";
 
+						prefix = monthday()+prefix;
+						
 						sfile = prefix + String.format("%03d", videoNo) + postfix + "." + ext;
 						destFile = new File(dest, "\\" + item[pos][itemIndex].getText() + "\\" + sfile);
 						// System.out.println("File:" + sfile);
